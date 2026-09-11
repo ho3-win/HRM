@@ -1,0 +1,1595 @@
+@model Mhrm.Models.ViewModels.EmployeeDetails
+
+@{
+    ViewData["Title"] = "جزئیات کارمند";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<style>
+
+.employee-page {
+    font-family: "Vazirmatn", sans-serif;
+    background-color: #f7f8fb;
+    color: #333333;
+    margin: 20px;
+    direction: rtl;
+    text-align: right;
+}
+
+.row {
+    flex-direction: row;
+}
+
+label, .view, .edit {
+    text-align: right;
+}
+
+input.edit {
+    direction: rtl;
+    text-align: right;
+}
+
+.employee-page h2 {
+    display: block;
+    width: 100%;
+    text-align: right !important;
+    margin: 18px 0 10px 0;
+    color: #444;
+    font-size: 1.3rem;
+}
+
+
+
+.card {
+    background: #fff;
+    padding: 18px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.05);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    border:2px  solid  gold;
+}
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.col {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+}
+.col.large {
+    min-width: 100%;
+}
+
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.view {
+    padding: 8px 10px;
+    background: #f0f3f9;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.view:hover { background: #e0e4ed; }
+
+.edit {
+    display: none;
+    padding: 8px 10px;
+    border: 1px solid #ccd1dd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color .3s ease;
+}
+.edit:focus {
+    border-color: #5b8dfd;
+}
+
+
+.btn {
+    margin-top: 16px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color .2s ease, transform .1s ease;
+   
+}
+
+.btn-primary {
+    background-color: #4a7bf5;
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #3c68ce;
+}
+
+.btn-success {
+    background-color: #23c586;
+    color: #fff;
+}
+.btn-success:hover {
+    background-color: #1ea972;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.contract-row{
+    border-bottom:1px solid #ddd;
+    padding:10px 0;
+    margin-bottom:10px;
+}
+
+.btn-danger{
+    background-color: #e90404;
+    color: #fff;
+}
+.btn-danger:hover{
+    background-color: #c50303;
+}
+
+</style>
+
+<div class="employee-page">
+    <hr/>
+    <h2>اطلاعات کارمند</h2>
+
+    <div class="card">
+        
+        <div class="row">
+            <div class="col">
+                <label>Id</label>
+                <span class="view" data-field="Id">@Model.Employee.Id</span>
+                <input class="edit" data-field="Id" value="@Model.Employee.Id" />
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label>نام</label>
+                <span class="view" data-field="FirstName">@Model.Employee.FirstName</span>
+                <input class="edit" data-field="FirstName" value="@Model.Employee.FirstName" />
+            </div>
+
+            <div class="col">
+                <label>نام خانوادگی</label>
+                <span class="view" data-field="LastName">@Model.Employee.LastName</span>
+                <input class="edit" data-field="LastName" value="@Model.Employee.LastName" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label>کد ملی</label>
+                <span class="view" data-field="National_id">@Model.Employee.National_id</span>
+                <input class="edit" data-field="National_id" value="@Model.Employee.National_id" />
+            </div>
+
+            <div class="col">
+                <label>شماره موبایل</label>
+                <span class="view" data-field="Phone">@Model.Employee.Phone</span>
+                <input class="edit" data-field="Phone" value="@Model.Employee.Phone" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label>تاریخ تولد  </label>
+                <span class="view" data-field="BirthDate">@Model.Employee.BirthDate?.ToString("yyyy/MM/dd")</span>
+                <input class="edit" type="date" data-field="BirthDate" value="@(Model.Employee.BirthDate?.ToString("yyyy-MM-dd")?? "null")" />
+            </div>
+
+            <div class="col">
+                <label>ایمیل</label>
+                <span class="view" data-field="Email">@Model.Employee.Email </span>
+                <input class="edit" data-field="Email" value="@Model.Employee.Email" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label>تاریخ استخدام   </label>
+                <span class="view" data-field="HireDate">@Model.Employee.HireDate?.ToString("yyyy/MM/dd")</span>
+                <input class="edit" type="date" data-field="HireDate" value="@(Model.Employee.HireDate?.ToString("yyyy-MM-dd")?? "null")" />
+            </div>
+
+            <div class="col">
+                <label>وضعیت </label>
+                <span class="view" data-field="Status">@Model.Employee.Status</span>
+                <input class="edit" data-field="Status" value="@Model.Employee.Status" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label>  شماره بیمه  </label>
+                <span class="view" data-field="InsuranceNumber">@Model.Employee.InsuranceNumber</span>
+                <input class="edit" data-field="InsuranceNumber" value="@Model.Employee.InsuranceNumber" />
+            </div>
+
+            <div class="col">
+                <label> عنوان شغلی</label>
+                <span class="view" data-field="DepartmentPositionId">@Model.Employee.DepartmentPositionId</span>
+                <input class="edit" data-field="DepartmentPositionId" value="@Model.Employee.DepartmentPositionId" />
+            </div>
+        </div>
+
+        <button id="btnSaveEmployee" class="btn btn-primary">
+            ذخیره اطلاعات کارمند
+        </button>
+    </div>
+
+    @* @if (Model.User == null)
+    {
+        <div class="card">
+        <h2>ایجاد حساب کاربری</h2>
+
+        <button id="btnShowCreateUser" class="btn btn-success" style="display:inline-block;">افزودن یوزر جدید</button>
+
+        <div id="newUserForm" style="display:none;margin-top:15px;">
+            <div class="row">
+                <div class="col">
+                    <label>Username</label>
+                    <input id="uUsername" class="edit" style="display:block"/>
+                </div>
+                <div class="col">
+                    <label>Password</label>
+                    <input id="uPassword" class="edit" style="display:block"/>
+                </div>
+                <div class="col">
+                    <label>RoleId</label>
+                    <input id="uRole" class="edit" style="display:block"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Bio</label>
+                    <textarea id="uBio" class="edit" style="display:block;height:60px;"></textarea>
+                </div>
+            </div>
+
+            <button id="btnSaveUserNew" class="btn btn-primary" style="display:inline-block;">ثبت یوزر</button>
+        </div>
+    </div>
+
+    } *@
+
+    
+    @if (Model.User != null)
+    {
+        <div class="card ">
+            <h2>اطلاعات کاربری</h2>
+        
+            <div class="row ">
+
+                <div class="col ">
+                    <label>ID</label>
+                    <span class="view" data-field="Id">@Model.User.Id</span>
+                    <input class="edit" data-field="Id" value="@Model.User.Id" />
+                </div>
+
+                <div class="col ">
+                    <label>Username </label>
+                    <span class="view" data-field="Username">@Model.User.Username</span>
+                    <input class="edit" data-field="Username" value="@Model.User.Username" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col ">
+                    <label>Bio</label>
+                    <span class="view" data-field="Bio">@Model.User.Bio</span>
+                    <input class="edit" data-field="Bio" value="@Model.User.Bio" />
+                </div>
+
+                <div class="col ">
+                    <label>Password</label>
+                    <span class="view" data-field="Password">@Model.User.Password</span>
+                    <input class="edit" data-field="Password" value="@Model.User.Password" />
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col ">
+                    <label>RoleId</label>
+                    <span class="view" data-field="RoleId">@(Model.User.RoleId switch
+                        {
+                            1 => "مدیرارشد",
+                            2 => "مدیر",
+                            3 => "مسئول منابع انسانی",
+                            4 => "کارمند",
+                            5 => "بیننده",
+                            _ => "نامشخص"
+                        })</span>
+                    <input class="edit" data-field="RoleId" value="@Model.User.RoleId" />
+                </div>
+
+            </div>
+            
+        
+            <button id="btnSaveUser" class="btn btn-success">
+                ذخیره اطلاعات یوزر
+            </button>
+            
+        </div>
+    }
+
+    
+
+    <div class="card">
+        <h2>قراردادها</h2>
+        <div class="card">
+    
+
+        <button id="btnAddContract" class="btn btn-success" style="display:inline-block">
+            افزودن قرارداد
+        </button>
+
+        <div class="row contract-row" id="newContractForm" style="display:none;margin-top:15px;">
+            <div class="row">
+                
+
+                <div class="col">
+                    <label>ContractType</label>
+                    <input id="cContractType" class="edit" style="display:block" />
+                </div>
+
+                <div class="col">
+                    <label>StartDate</label>
+                    <input type="date" id="cStartDate" class="edit" style="display:block" />
+                </div>
+
+                <div class="col">
+                    <label>EndDate</label>
+                    <input type="date" id="cEndDate" class="edit" style="display:block" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>Salary</label>
+                    <input id="cSalary" class="edit" style="display:block" />
+                </div>
+
+                <div class="col">
+                    <label>HoursPerWeek</label>
+                    <input id="cHoursPerWeek" class="edit" style="display:block" />
+                </div>
+
+                <div class="col">
+                    <label>Status</label>
+                    <input id="cStatus" class="edit" style="display:block" />
+                </div>
+
+                <div class="col">
+                    <label>Id</label>
+                    <input id="cId" class="edit" style="display:block" readonly />
+                </div>
+            </div>
+            
+
+            
+            <button id="btnSaveContract" class="btn btn-primary" style="display:inline-block">
+                ذخیره قرارداد
+            </button>
+        </div>
+
+          
+        @foreach (var c in Model.Contracts)
+        {
+            <div class="row contract-row"
+                style="border-bottom:1px solid #eee">
+
+                <div class="col" onclick="editContract(
+                        @c.Id,
+                        '@c.ContractType',
+                        '@c.StartDate.ToString("yyyy-MM-dd")',
+                        '@c.EndDate.ToString("yyyy-MM-dd")',
+                        '@c.Salary',
+                        '@c.HoursPerWeek',
+                        '@c.Status'
+                    )">
+
+                    <label>Id</label>
+                    <span class="view">@c.Id</span>
+                </div>
+
+                <div class="col">
+                    <label>ContractType</label>
+                    <span class="view">@c.ContractType</span>
+                </div>
+
+                <div class="col">
+                    <label>StartDate</label>
+                    <span class="view">@c.StartDate.ToString("yyyy/MM/dd")</span>
+                </div>
+
+                <div class="col">
+                    <label>EndDate</label>
+                    <span class="view">@c.EndDate.ToString("yyyy/MM/dd")</span>
+                </div>
+
+                <div class="col">
+                    <label>Salary</label>
+                    <span class="view">@c.Salary</span>
+                </div>
+
+                <div class="col">
+                    <label>Hours</label>
+                    <span class="view">@c.HoursPerWeek</span>
+                </div>
+
+                <div class="col">
+                    <label>Status</label>
+                    <span class="view">@c.Status</span>
+                </div>
+
+                <!-- دکمه حذف -->
+                <div class="col ">
+                    <button class="btn btn-danger bt-delete"
+                            style="display:inline-block"
+                            onclick="deleteContract(@c.Id, event)">
+                        حذف
+                    </button>
+                </div>
+
+            </div>
+        }
+
+
+
+    </div>
+
+    <div class="card">
+
+    <h2>مدارک</h2>
+
+    <button id="btnAddDoc" class="btn btn-success" style="display:inline-block;">
+        افزودن مدرک
+    </button>
+
+    <div id="newDocForm" style="display:none;margin-top:15px;">
+        <div class="row">
+
+            <div class="col">
+                <label>Title</label>
+                <input id="dTitle" class="edit" style="display:block"/>
+            </div>
+
+            <div class="col">
+                <label>File</label>
+                <input type="file" id="dFile" class="edit" style="display:block"/>
+            </div>
+
+            <div class="col">
+                <label>Description</label>
+                <textarea id="dDesc" class="edit"
+                    style="display:block;height:60px;"></textarea>
+            </div>
+
+        </div>
+
+        <button id="btnSaveDoc"
+                class="btn btn-primary"
+                style="display:inline-block;">
+            ذخیره مدرک
+        </button>
+    </div>
+
+    @foreach (var d in Model.Documents)
+    {
+        <div class="row contract-row">
+
+            <div class="col">
+                <label>Title</label>
+                <span class="view">@d.Title</span>
+            </div>
+
+            <div class="col">
+                <label>File</label>
+
+                <a href="@d.FilePath"
+                target="_blank"
+                class="view"
+                onclick="event.stopPropagation()">
+
+                مشاهده فایل
+                </a>
+            </div>
+
+            <div class="col">
+                <label>Description</label>
+                <span class="view">@d.Description</span>
+            </div>
+
+            <div class="row" style="display:flex;gap:6px;align-items:end">
+
+                <button class="btn btn-info btn-sm"
+                    onclick="event.stopPropagation(); downloadDocument('@d.FilePath')">
+                    دانلود
+                </button>
+
+                <button class="col btn btn-warning btn-sm"
+                    onclick="event.stopPropagation();
+                    editDocument(@d.Id,'@d.Title','@d.FilePath','@d.Description')">
+                    ویرایش
+                </button>
+
+                <button class="col btn btn-danger btn-sm"
+                    onclick="event.stopPropagation();
+                    deleteDocument(@d.Id)">
+                    حذف
+                </button>
+
+            </div>
+
+        </div>
+    }
+
+    </div>
+
+
+    <div class="card">
+        <h2>مرخصی‌ها</h2>
+
+        <button id="btnAddLeave" class="btn btn-success" style="display:inline-block;">افزودن مرخصی</button>
+
+        <div id="newLeaveForm" style="display:none;margin-top:15px;">
+
+            <div class="row">
+
+                <div class="col">
+                    <label>StartDate</label>
+                    <input type="date" id="lStart"
+                        class="edit" style="display:block"/>
+                </div>
+
+                <div class="col">
+                    <label>EndDate</label>
+                    <input type="date" id="lEnd"
+                        class="edit" style="display:block"/>
+                </div>
+
+                <div class="col">
+                    <label>Status</label>
+                    <input id="lStatus"
+                        class="edit" style="display:block"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <label>LeaveType</label>
+                    <input id="lLeaveType"
+                        class="edit" style="display:block"/>
+                </div>
+
+                <div class="col">
+                    <label>ApprovedBy</label>
+                    <input id="lApprovedBy"
+                        class="edit" style="display:block"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col large">
+                    <label>Description</label>
+
+                    <textarea id="lDescription"
+                            class="edit"
+                            style="display:block;height:80px;">
+                    </textarea>
+                </div>
+
+            </div>
+
+            <button id="btnSaveLeave"
+                    class="btn btn-primary"
+                    style="display:inline-block;">
+
+                ثبت مرخصی
+            </button>
+
+        </div>
+
+
+        @foreach (var l in Model.LeaveRequests)
+        {
+            <div class="row contract-row">
+
+                <div class="col">
+                    <label>Start</label>
+                    <span class="view">@l.StartDate.ToString("yyyy/MM/dd")</span>
+                </div>
+
+                <div class="col">
+                    <label>End</label>
+                    <span class="view">@l.EndDate.ToString("yyyy/MM/dd")</span>
+                </div>
+
+                <div class="col">
+                    <label>Status</label>
+                    <span class="view">@l.Status</span>
+                </div>
+
+                <div class="col">
+                    <label>LeaveType</label>
+                    <span class="view">@l.LeaveType</span>
+                </div>
+
+                <div class="col">
+                    <label>ApprovedBy</label>
+                    <span class="view">@l.ApprovedBy</span>
+                </div>
+
+                <div class="col large">
+                    <label>Description</label>
+                    <span class="view">@l.Description</span>
+                </div>
+
+                <div >
+                    <button class="btn btn-warning"
+                        onclick="editLeave(
+                            @l.Id,
+                            '@l.StartDate.ToString("yyyy-MM-dd")',
+                            '@l.EndDate.ToString("yyyy-MM-dd")',
+                            '@l.Status',
+                            '@l.LeaveType',
+                            '@Html.Raw((l.Description ?? "").Replace("'", "\\'"))',
+                            '@l.ApprovedBy'
+                        )">
+                        ویرایش
+                    </button>
+                </div>
+
+                <div >
+                    <button class="btn btn-danger"
+                        onclick="deleteLeave(@l.Id)">
+                        حذف
+                    </button>
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+
+    @* /////////////////////////////////////////////////////////////////////////////////////////////// *@
+   <div class="card">
+        <h2>درخواست‌ها</h2>
+
+        <button id="btnAddRequest" class="btn btn-success" style="display:inline-block;">افزودن درخواست</button>
+
+        <div id="newRequestForm" style="display:none;margin-top:15px">
+
+            
+
+
+            <div class="row">
+
+                <div class="col">
+                    <label>نوع درخواست مرخصی</label>
+                    <select id="rLeaveRequest" class="edit" style="display:block">
+                        <option value="false">درخواست عادی</option>
+                        <option value="true">درخواست مرخصی</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label>تاریخ شروع</label>
+                    <input type="date" id="rStartDate" class="edit" style="display:block">
+                </div>
+
+                <div class="col">
+                    <label>تاریخ پایان</label>
+                    <input type="date" id="rEndDate" class="edit" style="display:block">
+                </div>
+
+                <div class="col">
+                    <label>تایید کننده</label>
+                    <input type="number" id="rApprovedBy" class="edit" style="display:block">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <label>توضیحات</label>
+                    <input type="text" id="rDesc" class="edit" style="display:block">
+                </div>
+
+                <div class="col">
+                    <label>وضعیت</label>
+                    <select id="rStatus" class="edit" style="display:block">
+                        <option value="">انتخاب کنید</option>
+                        <option value="Pending">در انتظار</option>
+                        <option value="Approved">تایید شده</option>
+                        <option value="Rejected">رد شده</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button id="btnSaveRequest" class="btn btn-success" style="display:inline-block">
+                ثبت درخواست
+            </button>
+
+        </div>
+
+        @foreach (var r in Model.Requests)
+        {
+            <div class="row contract-row">
+
+               <div class="col">
+                    <label>شماره</label>
+                    <span class="view">@r.Id</span>
+                </div>
+                
+                <div class="col">
+                    <label>Status</label>
+                    <span class="view">@r.Status</span>
+                </div>
+
+                <div class="col">
+                    <label>نوع درخواست</label>
+                    <span class="view">
+                        @(r.LeaveRequest ? "مرخصی" : "درخواست عادی")
+                    </span>
+                </div>
+
+                <div class="col">
+                    <label>تاریخ شروع</label>
+                    <span class="view">
+                        @r.StartDate.ToString("yyyy/MM/dd")
+                    </span>
+                </div>
+
+                <div class="col">
+                    <label>تاریخ پایان</label>
+                    <span class="view">
+                        @r.EndDate.ToString("yyyy/MM/dd")
+                    </span>
+                </div>
+
+                <div class="col">
+                    <label>تایید کننده</label>
+                    <span class="view">@r.ApprovedBy</span>
+                </div>
+
+                <div class="col">
+                    <label>Description</label>
+                    <span class="view">@r.Description</span>
+                </div>
+
+                <div>
+                    <button class="btn btn-warning"
+                        onclick="editRequest(
+                            @r.Id,
+                            '@Html.Raw((r.Description ?? "").Replace("'", "\\'"))',
+                            '@r.Status',
+                            '@r.LeaveRequest',
+                            '@r.StartDate.ToString("yyyy-MM-dd")',
+                            '@r.EndDate.ToString("yyyy-MM-dd")',
+                            '@r.ApprovedBy'
+                        )">
+                        ویرایش
+                    </button>
+
+                </div>
+
+                <div>
+                    <button class="btn btn-danger"
+                        onclick="deleteRequest(@r.Id)">
+                        حذف
+                    </button>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+
+    <div class="card">
+        <h2>  بازدیدها</h2>
+
+        <button id="btnAddSession" class="btn btn-success" style="display:inline-block;">افزودن بازدید</button>
+
+        <div id="newSessionForm" style="display:none;margin-top:15px;">
+
+            <div class="row">
+
+                <div class="col">
+                    <label>Session Token</label>
+                    <input id="sToken" class="edit" style="display:block"/>
+                </div>
+
+                <div class="col">
+                    <label>IP Address</label>
+                    <input id="sIp" class="edit" style="display:block"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <label>User Agent</label>
+                    <input id="sAgent" class="edit" style="display:block"/>
+                </div>
+
+                <div class="col">
+                    <label>Login_at</label>
+
+                    <input type="datetime-local"
+                        id="sLogin"
+                        class="edit"
+                        style="display:block"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <label>Logout_at</label>
+
+                    <input type="datetime-local"
+                        id="sLogout"
+                        class="edit"
+                        style="display:block"/>
+                </div>
+
+                <div class="col">
+                    <label>Expirees_at</label>
+
+                    <input type="datetime-local"
+                        id="sExpire"
+                        class="edit"
+                        style="display:block"/>
+                </div>
+
+            </div>
+
+            <button id="btnSaveSession"
+                    class="btn btn-primary"
+                    style="display:inline-block;">
+
+                ثبت بازدید
+            </button>
+
+        </div>
+
+        @foreach (var s in Model.Sessions)
+        {
+            <div class="row contract-row">
+
+                <div class="col">
+                    <label>Token</label>
+                    <span class="view">@s.Session_token</span>
+                </div>
+
+                <div class="col">
+                    <label>IP</label>
+                    <span class="view">@s.Ip_address</span>
+                </div>
+
+                <div class="col">
+                    <label>Expire</label>
+                    <span class="view">
+                       @s.Expirees_at.ToString("yyyy/MM/dd HH:mm")
+                    </span>
+                </div>
+
+
+                <div class="col">
+                    <label>Login</label>
+                    <span class="view">
+                        @s.Login_at.ToString("yyyy/MM/dd HH:mm")
+                    </span>
+                </div>
+
+                <div class="col">
+                    <label>Logout</label>
+                    <span class="view">
+                        @s.Logout_at.ToString("yyyy/MM/dd HH:mm")
+                    </span>
+                </div>
+
+                
+                 <div class="col">
+                    <label>User Agent</label>
+                    <span class="view">@s.User_agent</span>
+                </div>
+
+                <div>
+                    <button class="btn btn-warning"
+                        onclick="editSession(
+                            @s.Id,
+                            '@s.Session_token',
+                            '@s.Ip_address',
+                            '@s.User_agent',
+                            '@s.Login_at.ToString("yyyy-MM-ddTHH:mm")',
+                            '@s.Logout_at.ToString("yyyy-MM-ddTHH:mm")',
+                            '@s.Expirees_at.ToString("yyyy-MM-ddTHH:mm")'
+                        )">
+
+                        ویرایش
+                    </button>
+                </div>
+
+                <div>
+                    <button class="btn btn-danger"
+                        onclick="deleteSession(@s.Id)">
+
+                        حذف
+                    </button>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<script>
+    function previewDocument(path) {
+
+        const ext = path.split('.').pop().toLowerCase();
+
+        let html = "";
+
+        // تصاویر
+        if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext)) {
+
+            html = `
+                <img src="${path}"
+                    class="img-fluid rounded shadow" />
+            `;
+        }
+
+        // pdf
+        else if (ext === "pdf") {
+
+            html = `
+                <iframe src="${path}"
+                        width="100%"
+                        height="700px">
+                </iframe>
+            `;
+        }
+
+        // ویدیو
+        else if (["mp4", "webm", "ogg"].includes(ext)) {
+
+            html = `
+                <video controls width="100%">
+                    <source src="${path}">
+                </video>
+            `;
+        }
+
+        // فایل‌های دیگر
+        else {
+
+            html = `
+                <a href="${path}"
+                target="_blank"
+                class="btn btn-primary">
+                دانلود فایل
+                </a>
+            `;
+        }
+
+        document.getElementById("previewBody").innerHTML = html;
+
+        const modal = new bootstrap.Modal(
+            document.getElementById('previewModal')
+        );
+
+        modal.show();
+    }
+
+
+
+    // متغیر کمکی برای تشخیص ویرایش یا ثبت جدید قرارداد
+    let selectedContractId = null;
+
+    // --- تابع کمکی برای ارسال داده به سرور (فقط یک بار تعریف شود) ---
+    async function postData(url, data) {
+
+        const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+        let options = {
+            method: "POST",
+            headers: {
+                "RequestVerificationToken": token
+            }
+        };
+
+        if (data instanceof FormData) {
+            options.body = data; 
+            
+        } else {
+            options.headers["Content-Type"] = "application/json";
+            options.body = JSON.stringify(data);
+        }
+
+        const res = await fetch(url, options);
+
+        const responseText = await res.text();
+        console.log("Server Response:", res.status, responseText);
+
+        return res.ok;
+    }
+
+
+    // تابع کمکی برای خواندن مقدار از اینپوت‌های ویرایش اطلاعات کارمند
+    function getVal(fieldName, type = "string") {
+        const el = document.querySelector(`input[data-field="${fieldName}"]`);
+        if (!el) return null;
+        const v = el.value.trim();
+        if (v === "") return null;
+        if (type === "int") return parseInt(v) || 0;
+        return v;
+    }
+
+    // --- مدیریت نمایش فیلدهای ویرایش اطلاعات کارمند ---
+    document.querySelectorAll(".view").forEach(span => {
+        span.addEventListener("click", () => {
+            const field = span.dataset.field;
+            const card = span.closest(".card");
+            if (!card) return;
+
+            const input = card.querySelector(`input[data-field="${field}"]`);
+            if (!input) return;
+
+            span.style.display = "none";
+            input.style.display = "block";
+            input.focus();
+
+            const saveBtn = card.querySelector(".btn-primary, .btn-success");
+            if (saveBtn) saveBtn.style.display = "inline-block";
+        });
+    });
+
+    // --- ذخیره اطلاعات اصلی کارمند ---
+    document.getElementById("btnSaveEmployee")?.addEventListener("click", async () => {
+        const payload = {
+            Id: @Model.Employee.Id,
+            FirstName: getVal("FirstName"),
+            LastName: getVal("LastName"),
+            Phone: getVal("Phone"),
+            National_id: getVal("National_id"),
+            Email: getVal("Email"),
+            BirthDate: getVal("BirthDate"),
+            HireDate: getVal("HireDate"),
+            Status: getVal("Status", "int"),
+            InsuranceNumber: getVal("InsuranceNumber"),
+            DepartmentPositionId: getVal("DepartmentPositionId", "int")
+        };
+        const ok = await postData("@Url.Action("UpdateEmployee")", payload);
+        ok ? location.reload() : alert("خطا در ذخیره اطلاعات کارمند");
+    });
+
+    // --- مدیریت قراردادها (ثبت و ویرایش) ---
+    document.getElementById("btnAddContract")?.addEventListener("click", () => {
+        selectedContractId = null;
+        document.getElementById("newContractForm").style.display = "block";
+        document.getElementById("btnSaveContract").textContent = "ثبت قرارداد جدید";
+
+        document.getElementById("cId").value = "";
+        document.getElementById("cContractType").value = "";
+        document.getElementById("cStartDate").value = "";
+        document.getElementById("cEndDate").value = "";
+        document.getElementById("cSalary").value = "";
+        document.getElementById("cHoursPerWeek").value = "";
+        document.getElementById("cStatus").value = "";
+    });
+
+
+
+    document.getElementById("btnSaveContract")?.addEventListener("click", async () => {
+        const start = document.getElementById("cStartDate").value;
+        const end = document.getElementById("cEndDate").value;
+        const statusValue = document.getElementById("cStatus").value;
+
+        let statusText = statusValue;
+        if (statusValue == "0") statusText = "Draft";
+        else if (statusValue == "1") statusText = "Active";
+        else if (statusValue == "2") statusText = "Expired";
+        else if (statusValue == "3") statusText = "Terminated";
+
+        const payload = {
+            Id: selectedContractId || 0,
+            EmployeeId: @Model.Employee.Id,
+            StartDate: start ? new Date(start).toISOString() : null,
+            EndDate: end ? new Date(end).toISOString() : null,
+            Salary: parseFloat(document.getElementById("cSalary").value) || 0,
+            HoursPerWeek: parseInt(document.getElementById("cHoursPerWeek").value) || 0,
+            ContractType: document.getElementById("cContractType").value,
+            Status: statusText
+        };
+
+        const url = selectedContractId
+            ? "@Url.Action("UpdateContract", "Employeemenu")"
+            : "@Url.Action("CreateContract", "Employeemenu")";
+
+        const ok = await postData(url, payload);
+        ok ? location.reload() : alert("خطا در ذخیره قرارداد");
+    });
+
+
+    // --- مدیریت مدارک، مرخصی و درخواست‌ها ---
+    document.getElementById("btnAddDoc")?.addEventListener("click", () => document.getElementById("newDocForm").style.display = "block");
+        let selectedDocId = null;
+
+        function editDocument(id,title,file,desc){
+
+            selectedDocId=id;
+
+            document.getElementById("newDocForm").style.display="block";
+
+            document.getElementById("dTitle").value = title;
+            document.getElementById("dDesc").value = desc;
+        }
+
+
+    document.getElementById("btnSaveDoc")?.addEventListener("click", async () => {
+
+        const fileInput = document.getElementById("dFile");
+        const file = fileInput.files[0];
+
+        const payload = new FormData();
+
+        payload.append("Id", selectedDocId || 0);
+        payload.append("EmployeeId", @Model.Employee.Id);
+        payload.append("Title", document.getElementById("dTitle").value);
+        payload.append("Description", document.getElementById("dDesc").value);
+
+        if (file)
+            payload.append("file", file);
+
+        const url = selectedDocId
+            ? "@Url.Action("UpdateDocument")"
+            : "@Url.Action("CreateDocument")";
+
+        const res = await fetch(url, {
+            method: "POST",
+            body: payload
+        });
+
+        res.ok ? location.reload() : alert("خطا در ذخیره مدرک");
+    });
+
+
+    let selectedLeaveId = null;
+    document.getElementById("btnAddLeave")?.addEventListener("click", () => document.getElementById("newLeaveForm").style.display = "block");
+    document.getElementById("btnSaveLeave")?.addEventListener("click", async () => {
+
+        const payload = {
+
+            Id: selectedLeaveId || 0,
+
+            EmployeeId: @Model.Employee.Id,
+
+            Request_by: @Model.Employee.Id,
+
+            LeaveType:
+                parseInt(document.getElementById("lLeaveType").value) || 0,
+
+            StartDate:
+                document.getElementById("lStart").value,
+
+            EndDate:
+                document.getElementById("lEnd").value,
+
+            Description:
+                document.getElementById("lDescription").value,
+
+            Status:
+                parseInt(document.getElementById("lStatus").value) || 0,
+
+            ApprovedBy:
+                parseInt(document.getElementById("lApprovedBy").value) || null
+        };
+
+
+        const url = selectedLeaveId
+            ? "@Url.Action("UpdateLeaveRequest")"
+            : "@Url.Action("CreateLeaveRequest")";
+
+        const ok = await postData(url, payload);
+
+        ok ? location.reload() : alert("خطا در ثبت مرخصی");
+    });
+
+    async function deleteLeave(id){
+
+        if(!confirm("آیا از حذف مرخصی مطمئن هستید؟"))
+            return;
+
+        const ok = await postData("@Url.Action("DeleteLeaveRequest")", id);
+
+        ok ? location.reload() : alert("خطا در حذف مرخصی");
+    }
+
+
+
+    let selectedSessionId = null;
+
+    document.getElementById("btnAddSession")
+    ?.addEventListener("click", () => {
+
+        selectedSessionId = null;
+
+        document.getElementById("newSessionForm")
+            .style.display = "block";
+
+        document.getElementById("sToken").value = "";
+        document.getElementById("sIp").value = "";
+        document.getElementById("sAgent").value = "";
+        document.getElementById("sLogin").value = "";
+        document.getElementById("sLogout").value = "";
+        document.getElementById("sExpire").value = "";
+
+        document.getElementById("btnSaveSession")
+            .textContent = "ثبت جلسه";
+    });
+
+    document.getElementById("btnSaveSession")
+        ?.addEventListener("click", async () => {
+
+            const payload = {
+                Id: selectedSessionId || 0,
+                UserId: @(Model.User?.Id ?? 0),
+                Session_token: document.getElementById("sToken").value,
+                Ip_address: document.getElementById("sIp").value,
+                User_agent: document.getElementById("sAgent").value,
+                
+                // مستقیماً مقدار را بدون تبدیل به ISO بفرستید
+                Login_at: document.getElementById("sLogin").value,
+                Logout_at: document.getElementById("sLogout").value,
+                Expirees_at: document.getElementById("sExpire").value
+            };
+
+
+
+            console.log(payload);
+
+            const url = selectedSessionId
+                ? "@Url.Action("UpdateSession")"
+                : "@Url.Action("CreateSession")";
+
+            const ok = await postData(url, payload);
+
+            ok
+                ? location.reload()
+                : alert("خطا در ذخیره جلسه");
+        });
+
+
+
+
+    function editSession(
+        id,
+        token,
+        ip,
+        agent,
+        login,
+        logout,
+        expire
+    ){
+
+        selectedSessionId = id;
+
+        document.getElementById("newSessionForm")
+            .style.display = "block";
+
+        document.getElementById("sToken").value = token;
+
+        document.getElementById("sIp").value = ip;
+
+        document.getElementById("sAgent").value = agent;
+
+        document.getElementById("sLogin").value = login;
+
+        document.getElementById("sLogout").value = logout;
+
+        document.getElementById("sExpire").value = expire;
+
+        document.getElementById("btnSaveSession")
+            .textContent = "ویرایش جلسه";
+    }
+
+    async function deleteSession(id){
+
+        if(!confirm("آیا جلسه حذف شود؟"))
+            return;
+
+        const ok = await postData(
+            "@Url.Action("DeleteSession")",
+            { id:id }
+        );
+
+        ok
+            ? location.reload()
+            : alert("خطا در حذف جلسه");
+    }
+
+
+
+
+    // --- مدیریت یوزر ---
+    document.getElementById("btnShowCreateUser")?.addEventListener("click", () => document.getElementById("newUserForm").style.display = "block");
+    document.getElementById("btnSaveUserNew")?.addEventListener("click", async () => {
+        const payload = {
+            EmployeeId: @Model.Employee.Id,
+            Username: document.getElementById("uUsername").value,
+            Password: document.getElementById("uPassword").value,
+            RoleId: parseInt(document.getElementById("uRole").value) || 1,
+            Bio: document.getElementById("uBio").value
+        };
+        const ok = await postData("@Url.Action("CreateUser")", payload);
+        ok ? location.reload() : alert("خطا در ثبت یوزر");
+    });
+
+
+
+    document.getElementById("btnSaveUser")?.addEventListener("click", async () => {
+
+        const payload = {
+
+            Id: @Model.User?.Id,
+
+            EmployeeId: @Model.Employee.Id,
+
+            Username:
+                document.querySelector('input[data-field="Username"]').value,
+
+            Bio:
+                document.querySelector('input[data-field="Bio"]').value,
+
+            Password:
+                document.querySelector('input[data-field="Password"]').value,
+
+            RoleId:
+                parseInt(
+                    document.querySelector('input[data-field="RoleId"]').value
+                ) || 0
+        };
+
+        const ok = await postData(
+            "@Url.Action("UpdateUser")",
+            payload
+        );
+
+        ok
+            ? location.reload()
+            : alert("خطا در ذخیره اطلاعات یوزر");
+    });
+
+
+    function editContract(id, contractType, start, end, salary, hoursPerWeek, status) {
+        selectedContractId = id;
+
+        document.getElementById("newContractForm").style.display = "block";
+        document.getElementById("btnSaveContract").textContent = "ویرایش قرارداد";
+
+        document.getElementById("cId").value = id;
+        document.getElementById("cContractType").value = contractType;
+        document.getElementById("cStartDate").value = start;
+        document.getElementById("cEndDate").value = end;
+        document.getElementById("cSalary").value = salary;
+        document.getElementById("cHoursPerWeek").value = hoursPerWeek;
+
+        if (status === "Active") document.getElementById("cStatus").value = "1";
+        else if (status === "Expired") document.getElementById("cStatus").value = "2";
+        else if (status === "Terminated") document.getElementById("cStatus").value = "3";
+        else document.getElementById("cStatus").value = "0";
+    }
+
+
+    async function deleteContract(id, event) {
+
+            event.stopPropagation(); // جلوگیری از اجرای editContract
+
+            if (!confirm("آیا مطمئن هستید قرارداد حذف شود؟"))
+                return;
+
+            const ok = await postData("@Url.Action("DeleteContract","Employeemenu")", { id: id });
+
+            ok ? location.reload() : alert("خطا در حذف قرارداد");
+        }
+
+        async function deleteDocument(id){
+
+        if(!confirm("آیا از حذف مدرک مطمئن هستید؟"))
+            return;
+
+        const ok = await postData("@Url.Action("DeleteDocument")", id);
+
+        if(ok)
+            location.reload();
+        else
+            alert("خطا در حذف مدرک");
+    }
+
+    function downloadDocument(path){
+
+            const link = document.createElement("a");
+
+            link.href = path;
+
+            // استخراج نام فایل
+            const fileName = path.split("/").pop();
+
+            link.download = fileName;
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            document.body.removeChild(link);
+        }
+
+        function editLeave(
+            id,
+            start,
+            end,
+            status,
+            leaveType,
+            description,
+            approvedBy
+        ){
+
+            selectedLeaveId = id;
+
+            document.getElementById("newLeaveForm").style.display = "block";
+
+            document.getElementById("lStart").value = start;
+            document.getElementById("lEnd").value = end;
+            document.getElementById("lStatus").value = status;
+
+            document.getElementById("lLeaveType").value = leaveType;
+
+            document.getElementById("lDescription").value = description;
+
+            document.getElementById("lApprovedBy").value =
+                approvedBy ?? "";
+
+            document.getElementById("btnSaveLeave").textContent =
+                "ویرایش مرخصی";
+        }
+
+
+
+
+        let selectedRequestId = null;
+
+            document.getElementById("btnAddRequest")?.addEventListener("click", () => {
+
+            selectedRequestId = null;
+
+            document.getElementById("newRequestForm").style.display = "block";
+
+            document.getElementById("rDesc").value = "";
+            document.getElementById("rStatus").value = "";
+            document.getElementById("rLeaveRequest").value = "false";
+            document.getElementById("rStartDate").value = "";
+            document.getElementById("rEndDate").value = "";
+            document.getElementById("rApprovedBy").value = "";
+
+            document.getElementById("btnSaveRequest").textContent = "ثبت درخواست";
+        });
+
+
+
+    document.getElementById("btnSaveRequest")?.addEventListener("click", async () => {
+
+        const startDate = document.getElementById("rStartDate").value;
+        const endDate = document.getElementById("rEndDate").value;
+        const approvedByValue = document.getElementById("rApprovedBy").value;
+
+        const payload = {
+            Id: selectedRequestId || 0,
+            RequestBy: @Model.Employee.Id,
+            LeaveRequest: document.getElementById("rLeaveRequest").value === "true",
+            StartDate: startDate ? startDate : null,
+            EndDate: endDate ? endDate : null,
+            Description: document.getElementById("rDesc").value,
+            Status: document.getElementById("rStatus").value || "Pending",
+            ApprovedBy: approvedByValue ? parseInt(approvedByValue) : null
+        };
+
+        console.log("Request payload:", payload);
+
+        const url = selectedRequestId
+            ? "@Url.Action("UpdateRequest")"
+            : "@Url.Action("CreateRequest")";
+
+        const ok = await postData(url, payload);
+
+        ok
+            ? location.reload()
+            : alert("خطا در ثبت درخواست");
+    });
+
+
+
+    function editRequest(
+        id,
+        desc,
+        status,
+        leaveRequest,
+        startDate,
+        endDate,
+        approvedBy
+    ){
+
+        selectedRequestId = id;
+
+        const form = document.getElementById("newRequestForm");
+        form.style.display = "block";
+
+        document.getElementById("rDesc").value = desc || "";
+
+        document.getElementById("rStatus").value = status || "";
+
+        document.getElementById("rLeaveRequest").value =
+            leaveRequest === "True" || leaveRequest === "true"
+                ? "true"
+                : "false";
+
+        document.getElementById("rStartDate").value = startDate || "";
+
+        document.getElementById("rEndDate").value = endDate || "";
+
+        document.getElementById("rApprovedBy").value = approvedBy || "";
+
+        document.getElementById("btnSaveRequest").textContent =
+            "ویرایش درخواست";
+    }
+
+
+    async function deleteRequest(id){
+
+        if(!confirm("آیا از حذف درخواست مطمئن هستید؟"))
+            return;
+
+        const ok = await postData("@Url.Action("DeleteRequest")", id);
+
+        ok
+            ? location.reload()
+            : alert("خطا در حذف درخواست");
+    }
+
+</script>
+
+

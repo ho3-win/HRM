@@ -1,0 +1,260 @@
+@model List<NewsVM>
+@{
+    Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+    ViewData["Title"] = "MHRM ";
+}
+
+
+<style>
+    body {
+        font-family: Tahoma, sans-serif;
+        background: #f5f5f5;
+    }
+
+    .category{
+        margin:15px  0px;
+        font-size:13px;
+        color: #555;
+    }
+
+    .card.important{
+        border:2px solid #dc3545 !important;
+    }
+
+    .important-card{
+        border:2px solid #dc3545;
+        box-shadow:0 0 10px rgba(220,53,69,0.2);
+    }
+
+    .container {
+        max-width: 100%;
+        margin: auto;
+        direction: rtl;
+        text-align: right;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .btn {
+        background: #efd13b;
+        color: black;
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        margin-right:auto;
+        
+    }
+
+    .btn:hover {
+        background: #ffcc02;
+    }
+
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .card {
+        width: 100%;
+        background: white;
+        border-radius: 12px;
+        border:2px solid gold;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        
+        width: 100%;
+       
+        border: 2px solid gold;
+        height: auto;
+        object-fit: cover;
+        background: #ddd;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    .title {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .text {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #777;
+    }
+
+    .badge {
+        background: #dc3545;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+    }
+
+    .empty {
+        text-align: center;
+        padding: 50px;
+        background: white;
+        border-radius: 12px;
+    }
+
+    .delete-bt
+    {
+        background: #f5e902;
+        color: #200707;
+        border:none;
+        margin-top: 5px;
+        padding:6px 12px;
+        border-radius:6px;
+        cursor:pointer;
+    }
+
+
+    /* Responsive */
+    @* @media(max-width: 900px) {
+        .card {
+            width: calc(50% - 10px);
+        }
+    }
+
+    @media(max-width: 600px) {
+        .card {
+            width: 100%;
+        }
+    } *@
+</style>
+
+<div class="container">
+
+    <br/>
+    <br/>
+    <br/>
+
+    @if (TempData["Success"] != null)
+    {
+        <div style="background:#d4edda;padding:10px;border-radius:8px;margin-bottom:15px;">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="empty">
+            <h3>هیچ خبری وجود ندارد</h3>
+            <p>برای شروع یک خبر جدید اضافه کنید</p>
+        </div>
+    }
+    else
+    {
+        <div class="grid">
+
+            @foreach (var item in Model)
+            {
+                <div class="card @(item.IsImportant ? "important" : "")">
+
+                    @if (!string.IsNullOrEmpty(item.FilePath))
+                    {
+                        var ext = System.IO.Path.GetExtension(item.FilePath).ToLower();
+
+                        if (ext == ".mp4" || ext == ".webm" || ext == ".ogg")
+                        {
+                            <video controls width="100%" height="auto">
+                                <source src="@item.FilePath" type="video/mp4" />
+                                مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+                            </video>
+                        }
+                        else
+                        {
+                            <img src="@item.FilePath" />
+                        }
+                    }
+                    else
+                    {
+                        <div style="height:200px;background:#ccc;display:flex;align-items:center;justify-content:center;">
+                            بدون فایل
+                        </div>
+                    }
+
+                    <div class="card-body">
+
+                        <div class="category">
+                            دسته‌بندی:
+                            @switch (item.Category)
+                            {
+                                case 0:
+                                    <span>عمومی</span>
+                                    break;
+                                case 1:
+                                    <span>شرکت</span>
+                                    break;
+                                case 2:
+                                    <span>رویداد</span>
+                                    break;
+                                case 3:
+                                    <span>آموزشی</span>
+                                    break;
+                                default:
+                                    <span>سایر</span>
+                                    break;
+                            }
+                        </div>
+                        <div class="title">@item.Title</div>
+
+                        <div class="text">
+                            @(string.IsNullOrEmpty(item.Content)
+                                ? "بدون توضیح"
+                                : item.Content)
+                        </div>
+
+                        <div class="footer">
+
+                            <span>@item.CreatedAt.ToString("yyyy/MM/dd")</span>
+
+                            @if (!item.IsActive)
+                            {
+                                <span class="badge">غیرفعال</span>
+                            }
+
+                        </div>
+                        <div>
+                            منتشر کننده:
+                            @item.EmployeeFirstName
+                            @item.EmployeeLastName
+                            (@item.EmployeeId)
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,302 @@
+@model List<Mhrm.Models.Request>
+@using System.Collections.Generic
+
+@{
+    ViewData["Title"] = "مدیریت درخواست‌ها";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+    var employeeNames = ViewBag.EmployeeNames as Dictionary<int, string>;
+}
+
+
+
+
+<style>
+
+    
+   
+    .request-row.editing {
+        direction: rtl;
+    }
+
+    .request-row.editing input,
+    .request-row.editing select {
+        width: 100%;
+        text-align: right;
+        direction: rtl;
+        box-sizing: border-box;
+    }
+
+    
+    .employee-create-page { 
+        direction: rtl;
+        text-align: right;
+        font-family: tahoma, arial;
+    }
+    
+    .request-row {
+        display: grid;
+        grid-template-columns:50px 90px 130px 100px 120px 120px 1fr 130px 120px 120px;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 12px;
+        border: 1px solid #e0e75e;
+        border-radius: 8px;
+        background: #f9fafb;
+        margin-bottom: 6px;
+        font-size: 13px;
+    }
+
+    .request-row.header { background: #e5e7eb; font-weight: 600; }
+    .request-row:hover:not(.header) { background: #e0e7ff; border-color: #c7d2fe; }
+    .request-cell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .request-actions { display: flex; gap: 8px; justify-content: center; }
+    .btn-edit, .btn-delete, .btn-edit-save, .btn-edit-cancel {
+        border: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;
+    }
+    .btn-edit { background-color: #4f46e5; color: #fff; }
+    .btn-delete { background-color: #fee2e2; color: #b91c1c; }
+    .btn-edit-save { background-color: #10b981; color: #fff; }
+    .btn-edit-cancel { background-color: #6b7280; color: #fff; }
+
+    /* ریسپانسیو موبایل */
+    @@media (max-width: 1024px) {
+        .request-row { grid-template-columns: 1fr; padding: 15px; }
+        .request-row.header { display: none; }
+        .request-cell { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 8px 0; }
+        .request-cell::before { content: attr(data-label); font-weight: bold; color: #4f46e5; margin-left: 10px; }
+        .request-actions { margin-top: 10px; }
+    }
+</style>
+
+<div class="employee-create-page">
+    <div class="page-container">
+        <div class="form-container">
+        <br/>
+        <br/>
+        <br/>
+            @if (Model != null && Model.Any())
+            {
+                <div class="request-row header">
+                    <div class="request-cell">شماره</div>
+                    <div class="request-cell">شماره کارمند </div>
+                    <div class="request-cell">کارمند</div>
+                    <div class="request-cell">نوع</div>
+                    <div class="request-cell">شروع</div>
+                    <div class="request-cell">پایان</div>
+                    <div class="request-cell">توضیحات</div>
+                    <div class="request-cell">وضعیت</div>
+                    <div class="request-cell">تأییدکننده</div>
+                    <div class="request-cell">عملیات</div>
+                </div>
+
+                @foreach (var req in Model)
+                {
+                    <div class="request-row" id="row-@req.Id">
+                        <div class="request-cell" data-label="شماره">@req.Id</div>
+                        <div class="request-cell" data-label="کارمند">
+                            @(employeeNames != null && employeeNames.ContainsKey(req.RequestBy)
+                                ? $"( {req.RequestBy} )"
+                                : $"شناخته شده ( {req.RequestBy})")
+                        </div>
+
+                        <div class="request-cell" data-label="کارمند">
+                            @(employeeNames != null && employeeNames.ContainsKey(req.RequestBy)
+                                ? $"{employeeNames[req.RequestBy]}"
+                                : $"شناخته شده ( {req.RequestBy})")
+                        </div>
+
+                        <div class="request-cell" data-label="نوع">@(req.LeaveRequest ? "مرخصی" : "سایر")</div>
+                        <div class="request-cell" data-label="شروع">@req.StartDate.ToString("yyyy/MM/dd")</div>
+                        <div class="request-cell" data-label="پایان">@req.EndDate.ToString("yyyy/MM/dd")</div>
+                        <div class="request-cell" data-label="توضیحات">@req.Description</div>
+                        <div class="request-cell" data-label="وضعیت">
+                            @switch (req.Status)
+                            {
+                                case "Pending":
+                                    @:در انتظار
+                                    break;
+                                case "Approved":
+                                    @:تایید شده
+                                    break;
+                                case "Rejected":
+                                    @:رد شده
+                                    break;
+                                default:
+                                    @:نامشخص
+                                    break;
+                            }
+                        </div>
+                        <div class="request-cell" data-label="تأییدکننده">@req.ApprovedBy</div>
+
+                        <div class="request-actions">
+                            <button type="button" class="btn-edit" 
+                                    data-id="@req.Id" 
+                                    data-requestby="@req.RequestBy"
+                                    data-leaverequest="@req.LeaveRequest.ToString().ToLower()"
+                                    data-startdate="@req.StartDate.ToString("yyyy-MM-dd")"
+                                    data-enddate="@req.EndDate.ToString("yyyy-MM-dd")"
+                                    data-description="@req.Description"
+                                    data-status="@req.Status"
+                                    data-approvedby="@req.ApprovedBy">
+                                ویرایش
+                            </button>
+                            <button type="button" class="btn-delete" data-id="@req.Id">حذف</button>
+                        </div>
+                    </div>
+                }
+
+            }
+            else
+            {
+                <span class="empty-text">هیچ درخواستی ثبت نشده است.</span>
+            }
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const employeeNames = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(employeeNames));
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    // تابع اصلی برای مدیریت کلیک ویرایش
+    function initEdit(btn) {
+        btn.onclick = function() {
+            const row = btn.closest(".request-row");
+            if (row.classList.contains("editing")) return;
+            row.classList.add("editing");
+
+            // خواندن دقیق دیتاها از دکمه
+            const d = btn.dataset;
+            const oldHtml = row.innerHTML; // ذخیره برای انصراف
+
+            row.innerHTML = `
+                <div class="request-cell" data-label="شماره">${d.id}</div>
+                <div class="request-cell" data-label="کارمند"><input type="number" class="edit-requestby" value="${d.requestby}" style="width:100%"></div>
+                <div class="request-cell" style="visibility:hidden"></div>
+                <div class="request-cell" data-label="نوع">
+                    <select class="edit-leaverequest" style="width:100%">
+                        <option value="true" ${d.leaverequest === 'true' ? 'selected' : ''}>مرخصی</option>
+                        <option value="false" ${d.leaverequest === 'false' ? 'selected' : ''}>سایر</option>
+                    </select>
+                </div>
+                <div class="request-cell" data-label="شروع"><input type="date" class="edit-startdate" value="${d.startdate}" style="width:100%"></div>
+                <div class="request-cell" data-label="پایان"><input type="date" class="edit-enddate" value="${d.enddate}" style="width:100%"></div>
+                <div class="request-cell" data-label="توضیحات"><input type="text" class="edit-description" value="${d.description}" style="width:100%"></div>
+                <div class="request-cell" data-label="وضعیت">
+                    <select class="edit-status" style="width:100%">
+                        <option value="Pending" ${d.status === 'Pending' ? 'selected' : ''}>در انتظار</option>
+                        <option value="Approved" ${d.status === 'Approved' ? 'selected' : ''}>تایید شده</option>
+                        <option value="Rejected" ${d.status === 'Rejected' ? 'selected' : ''}>رد شده</option>
+                    </select>
+                </div>          
+                <div class="request-cell" data-label="تأییدکننده"><input type="number" class="edit-approvedby" value="${d.approvedby}" style="width:100%"></div>
+                <div class="request-actions">
+                    <button type="button" class="btn-edit-save">ذخیره</button>
+                    <button type="button" class="btn-edit-cancel">انصراف</button>
+                </div>
+            `;
+
+            // دکمه انصراف
+            row.querySelector(".btn-edit-cancel").onclick = () => {
+                row.innerHTML = oldHtml;
+                row.classList.remove("editing");
+                rebindEvents(row);
+            };
+
+            // دکمه ذخیره
+            row.querySelector(".btn-edit-save").onclick = async () => {
+                const payload = {
+                    Id: parseInt(d.id),
+                    RequestBy: parseInt(row.querySelector(".edit-requestby").value),
+                    LeaveRequest: row.querySelector(".edit-leaverequest").value === "true",
+                    StartDate: row.querySelector(".edit-startdate").value,
+                    EndDate: row.querySelector(".edit-enddate").value,
+                    Description: row.querySelector(".edit-description").value,
+                    Status: row.querySelector(".edit-status").value,
+                    ApprovedBy: parseInt(row.querySelector(".edit-approvedby").value)
+                };
+
+                try {
+                    const res = await fetch("@Url.Action("UpdateRequest", "Employeemenu")", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (res.ok) {
+                        // آپدیت ظاهر ردیف و ساختن دکمه جدید با دیتای آپدیت شده
+                        const employeeName = employeeNames[payload.RequestBy] ?? "ناشناخته";
+
+                        row.innerHTML = `
+                        <div class="request-cell" data-label="شماره">${payload.Id}</div>
+                        <div class="request-cell" data-label="شماره کارمند">(${payload.RequestBy})</div>
+                        <div class="request-cell" data-label="کارمند">${employeeName}</div>
+                        <div class="request-cell" data-label="نوع">${payload.LeaveRequest ? "مرخصی" : "سایر"}</div>
+                        <div class="request-cell" data-label="شروع">${payload.StartDate.replace(/-/g, '/')}</div>
+                        <div class="request-cell" data-label="پایان">${payload.EndDate.replace(/-/g, '/')}</div>
+                        <div class="request-cell" data-label="توضیحات">${payload.Description}</div>
+                        <div class="request-cell" data-label="وضعیت">${payload.Status}</div>
+                        <div class="request-cell" data-label="تأییدکننده">${payload.ApprovedBy}</div>
+                        <div class="request-actions">
+                        <button type="button" class="btn-edit"
+                        data-id="${payload.Id}"
+                        data-requestby="${payload.RequestBy}"
+                        data-leaverequest="${payload.LeaveRequest}"
+                        data-startdate="${payload.StartDate}"
+                        data-enddate="${payload.EndDate}"
+                        data-description="${payload.Description}"
+                        data-status="${payload.Status}"
+                        data-approvedby="${payload.ApprovedBy}">ویرایش</button>
+                        <button type="button" class="btn-delete" data-id="${payload.Id}">حذف</button>
+                        </div>
+                        `;
+
+                        row.classList.remove("editing");
+                        rebindEvents(row);
+                        alert("تغییرات با موفقیت اعمال شد ✨");
+                    } else {
+                        alert("خطایی در سرور رخ داد.");
+                    }
+                } catch (e) {
+                    alert("خطا در ارتباط با سرور.");
+                }
+            };
+        };
+    }
+
+    // تابع برای حذف
+    function initDelete(btn) {
+        btn.onclick = async function() {
+            if (!confirm("مطمئنی می‌خوای پاکش کنی؟")) return;
+            const id = btn.dataset.id;
+            try {
+                const res = await fetch("@Url.Action("DeleteRequest", "Employeemenu")", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(id)
+                });
+                if (res.ok) {
+                    btn.closest(".request-row").remove();
+                } else {
+                    alert("حذف انجام نشد.");
+                }
+            } catch (e) { alert("خطا در شبکه"); }
+        };
+    }
+
+    // وصل کردن دوباره رویدادها بدون رفرش صفحه
+    function rebindEvents(parent) {
+        parent.querySelectorAll(".btn-edit").forEach(b => initEdit(b));
+        parent.querySelectorAll(".btn-delete").forEach(b => initDelete(b));
+    }
+
+    // اجرای اولیه
+    rebindEvents(document);
+});
+</script>

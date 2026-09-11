@@ -1,0 +1,263 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Vazirmatn", sans-serif;
+}
+
+
+.mgmt-topbar {
+    width: 100%;
+    height: 72px;
+
+    background: linear-gradient(90deg, #f3f3ef, #f3bf01);
+    color: #0c0909;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,.25);
+
+    flex-direction: row-reverse;
+}
+
+
+.mgmt-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-right:35px;
+}
+
+.mgmt-logo {
+    height: 55px;
+    transition: transform .25s ease;
+}
+
+.mgmt-logo:hover {
+    transform: scale(1.05);
+}
+
+.mgmt-brand-name{
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+}
+
+
+.mgmt-center {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.mgmt-dropdown {
+    position: relative;
+}
+
+.mgmt-btn{
+    color:#0c0707;
+    text-decoration:none;
+
+    padding:8px 16px;
+    border-radius:8px;
+
+    background:rgba(26, 11, 11, 0.08);
+    transition:all .25s;
+
+    margin:0 5px;
+}
+
+.mgmt-btn:hover{
+    background:#f6cf0a;
+    border:2px solid #27251d;
+}
+
+
+.mgmt-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.mgmt-logout-form{
+    margin:0;
+}
+
+.mgmt-logout-btn{
+    background:linear-gradient(135deg,#f9a304,#e8ca02);
+    color:white;
+
+    border:none;
+    border-radius:10px;
+
+    padding:8px 16px;
+    font-size:14px;
+
+    cursor:pointer;
+    transition:all .25s ease;
+
+    box-shadow:0 4px 12px rgba(230,57,70,0.25);
+}
+
+.mgmt-logout-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(230,57,70,0.35);
+    background:linear-gradient(135deg,#ff5a5f,#ed8505);
+}
+
+.mgmt-logout-btn:active{
+    transform:scale(0.97);
+}
+
+
+.mgmt-profile-photo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid rgba(255,255,255,.3);
+}
+
+.mgmt-profile-info{
+    display:flex;
+    flex-direction:column;
+    text-align:right;
+}
+
+.mgmt-profile-name{
+    font-weight:bold;
+}
+
+.mgmt-profile-role{
+    font-size:12px;
+    opacity:.8;
+}
+
+
+.mgmt-page-indicator{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:#fff;
+    color:#1b2847;
+
+    padding:10px 22px;
+    border-radius:12px;
+
+    margin:18px 30px 0 0;
+
+    font-size:15px;
+    font-weight:600;
+
+    direction:rtl;
+    text-align:right;
+
+    box-shadow:0 3px 10px rgba(0,0,0,0.12);
+
+    float:right;
+}
+
+
+.mgmt-content{
+    padding:25px;
+}
+
+
+   /* RESPONSIVE */
+@media (max-width: 992px){
+
+    .mgmt-topbar{
+        padding:0 15px;
+    }
+
+    .mgmt-center{
+        gap:12px;
+    }
+
+    .mgmt-btn{
+        padding:6px 10px;
+        font-size:13px;
+    }
+
+    .mgmt-logo{
+        height:45px;
+    }
+
+    .mgmt-brand-name{
+        font-size:16px;
+    }
+
+    .mgmt-profile-photo{
+        width:42px;
+        height:42px;
+    }
+}
+
+
+@media (max-width: 850px){
+
+    .mgmt-topbar{
+        flex-direction:column;
+        height:auto;
+        padding:10px;
+        gap:10px;
+    }
+
+    .mgmt-right,
+    .mgmt-center,
+    .mgmt-left{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .mgmt-center{
+        gap:6px;
+    }
+
+    .mgmt-btn{
+        font-size:12px;
+        padding:6px 8px;
+        margin:2px;
+    }
+
+    .mgmt-left{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .mgmt-profile-info{
+        text-align:center;
+    }
+
+    .mgmt-page-indicator{
+        float:none;
+        margin:10px auto;
+        display:flex;
+        justify-content:center;
+    }
+}
+
+
+@media (max-width: 550px){
+
+    .mgmt-brand-name{
+        font-size:14px;
+    }
+
+    .mgmt-btn{
+        font-size:11px;
+        padding:5px 6px;
+    }
+
+    .mgmt-logout-btn{
+        padding:6px 10px;
+        font-size:12px;
+    }
+}

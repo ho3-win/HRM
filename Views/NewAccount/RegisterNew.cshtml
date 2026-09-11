@@ -1,0 +1,437 @@
+
+@model Mhrm.Models.ViewModels.RegisterEmployeeViewModel
+
+@{
+    ViewData["Title"] = "ثبت کارمند جدید";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<style>
+    .employee-create-page {
+    width: 100%;
+    padding: 40px 40px;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    direction: rtl;
+    }
+
+
+    .employee-create-page * {
+        box-sizing: border-box;
+    }
+
+    .employee-create-page .page-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .employee-create-page .sidebar {
+        width: 280px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        padding: 15px;
+        max-height: 1400px;
+        overflow-y: auto;
+        flex-shrink: 0;
+    }
+
+    .employee-create-page .sidebar h5 {
+        text-align: center;
+        font-weight: 700;
+        margin: 0 0 15px 0;
+        color: #333;
+        border-bottom: 2px solid #4f46e5;
+        padding-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .employee-create-page .employee-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .employee-create-page .employee-list li {
+        margin-bottom: 8px;
+    }
+
+    .employee-create-page .employee-list a {
+        display: block;
+        background: #f9fafb;
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-size: 14px;
+        border: 1px solid #eef0f3;
+    }
+
+    .employee-create-page .employee-list a:hover {
+        background: #e0e7ff;
+        color: #1e40af;
+        border-color: #c7d2fe;
+    }
+
+    .employee-create-page .empty-text {
+        color: gray;
+        font-size: 13px;
+        display: block;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .employee-create-page .form-container {
+        flex: 1;
+        background: #ffffff;
+        padding: 30px 35px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        min-width: 0;
+        border:2px solid  gold ;
+    }
+
+    .employee-create-page .form-title {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        border-bottom: 2px solid #4f46e5;
+        padding-bottom: 12px;
+    }
+
+    .employee-create-page .form-group {
+        margin-bottom: 18px;
+    }
+
+    .employee-create-page label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #444;
+        font-size: 14px;
+    }
+
+    .employee-create-page .required::after {
+        content: " *";
+        color: #e11d48;
+    }
+
+    .employee-create-page input,
+    .employee-create-page select,
+    .employee-create-page textarea {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 14px;
+        background-color: #fff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .employee-create-page input:focus,
+    .employee-create-page select:focus,
+    .employee-create-page textarea:focus {
+        outline: none;
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    .employee-create-page .text-danger {
+        color: #e11d48;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .employee-create-page .actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .employee-create-page .btn-submit,
+    .employee-create-page .btn-cancel {
+        flex: 1;
+        border-radius: 8px;
+        padding: 11px 20px;
+        font-size: 15px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .employee-create-page .btn-submit {
+        background-color: #b8a606;
+        color: #fff;
+        border: none;
+    }
+
+    .employee-create-page .btn-submit:hover {
+        background-color: gold;
+    }
+
+    .employee-create-page .btn-cancel {
+        background-color: #f3f4f6;
+        color: #374151;
+        border: 1px solid #e5e7eb;
+    }
+
+    .employee-create-page .btn-cancel:hover {
+        background-color: #e5e7eb;
+    }
+
+    .employee-create-page .validation-summary-errors,
+    .employee-create-page .validation-summary-valid {
+        margin-bottom: 15px;
+    }
+
+    .employee-create-page .employee-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .btn-delete-employee {
+        background: none;
+        border: none;
+        color: #dc2626; 
+        font-size: 18px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .btn-delete-employee:hover {
+        color: #b91c1c;
+    }
+
+
+    @@media (max-width: 992px) {
+        .employee-create-page .page-container {
+            flex-direction: column;
+        }
+
+        .employee-create-page .sidebar {
+            width: 100%;
+            max-height: 300px;
+        }
+
+        .employee-create-page .form-container {
+            width: 100%;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .employee-create-page {
+            margin: 20px auto;
+            padding: 0 10px;
+        }
+
+        .employee-create-page .form-container {
+            padding: 20px 15px;
+        }
+
+        .employee-create-page .actions {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="employee-create-page">
+    <div class="page-container">
+
+        <div class="sidebar">
+            <h5>👥 لیست کارکنان</h5>
+            <ul class="employee-list">
+            @if (ViewBag.Employees != null)
+            {
+                foreach (var emp in ViewBag.Employees)
+                {
+                    <li>
+                        <div class="employee-item">
+                            <a asp-controller="Employeemenu"
+                            asp-action="Details"
+                            asp-route-id="@emp.Id">
+                                @emp.Id - @emp.FullName
+                            </a>
+
+                            <button type="button"
+                                    class="btn-delete-employee"
+                                    data-id="@emp.Id"
+                                    title="حذف کارمند">
+                                ❌
+                            </button>
+                        </div>
+                    </li>
+                }
+            }
+            else
+            {
+                <li>
+                    <span class="empty-text">هیچ کارمندی ثبت نشده است.</span>
+                </li>
+            }
+        </ul>
+
+        </div>
+
+        <div class="form-container">
+            <div class="form-title">📝 ثبت کارمند جدید</div>
+
+            <form asp-controller="NewAccount" asp-action="RegisterNew" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label class="required">نام</label>
+                    <input asp-for="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">نام خانوادگی</label>
+                    <input asp-for="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">کد ملی</label>
+                    <input asp-for="National_id" maxlength="10" />
+                    <span asp-validation-for="National_id" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>ایمیل</label>
+                    <input asp-for="Email" type="email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>شماره تماس</label>
+                    <input asp-for="Phone" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>تاریخ تولد</label>
+                    <input asp-for="BirthDate" type="date" />
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>تاریخ استخدام</label>
+                    <input asp-for="HireDate" type="date" />
+                    <span asp-validation-for="HireDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>شماره بیمه</label>
+                    <input asp-for="InsuranceNumber" />
+                    <span asp-validation-for="InsuranceNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>دپارتمان / سمت</label>
+                    <select asp-for="DepartmentPositionId" asp-items="ViewBag.DepartmentPosition">
+                        <option value="">-- انتخاب کنید --</option>
+                    </select>
+                    <span asp-validation-for="DepartmentPositionId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>وضعیت کارمند</label>
+                    <select asp-for="Status">
+                        <option value="1">مشغول به کار</option>
+                        <option value="4">غیرفعال</option>
+                        <option value="3">استعفا داده</option>
+                        <option value="2">معلق</option>
+                        <option value="2">درانتظار استخدام</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div>
+
+                    <hr />
+                    <br />
+                    <h4>اطلاعات کاربری</h4>
+                    <br />
+                    
+
+                    <div class="form-group">
+                        <label>نام کاربری</label>
+                        <input asp-for="Username" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>رمز عبور</label>
+                        <input asp-for="Password" type="password" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>نقش کاربر</label>
+                        <select asp-for="RoleId">
+                            <option value="1">مدیرارشد</option>
+                            <option value="2">مدیر </option>
+                            <option value="3">مسئول منابع انسانی</option>
+                            <option value="4">کارمند</option>
+                            <option value="5">بیننده</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea asp-for="Bio"></textarea>
+                    </div>
+
+                
+                </div>
+
+                <div class="actions">
+                    <a href="/" class="btn-cancel">انصراف</a>
+                    <button type="submit" class="btn-submit"> ثبت </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script>
+document.querySelectorAll(".btn-delete-employee").forEach(btn => {
+    btn.addEventListener("click", async (e) => {
+        const id = btn.dataset.id;
+        if (!confirm("آیا از حذف این کارمند مطمئن هستید؟")) return;
+
+        try {
+                const res = await fetch("@Url.Action("DeleteEmployee", "NewAccount")", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(id)
+            });
+
+            if (res.ok) {
+                btn.closest("li").remove();
+                alert("کارمند با موفقیت حذف شد ");
+            } else {
+                alert("خطا در حذف کارمند ❌");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("خطا در ارتباط با سرور.");
+        }
+    });
+});
+</script>

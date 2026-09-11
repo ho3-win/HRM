@@ -1,0 +1,86 @@
+@using System.Security.Claims
+
+
+
+@{
+    var nameSubpage =ViewBag.nameSubpage;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/management-header.css" />
+
+   
+</head>
+
+<body>
+
+    <div class="mgmt-topbar">
+
+        <!-- لوگو (راست) -->
+        <div class="mgmt-right">
+           <span class="mgmt-brand-name">MHRM</span>
+
+           <img src="~/images/Logo.png" class="mgmt-logo" />
+
+            
+        </div>
+
+        <!-- منوهای وسط -->
+        <div class="mgmt-center">
+
+            
+           
+        <div class="mgmt-dropdown">
+            <a class="mgmt-btn" asp-controller="Admin" asp-action="Index">  صفحه اصلی  </a>
+            <a class="mgmt-btn" asp-controller="Employeemenu" asp-action="List">لیست کارکنان</a>
+            <a class="mgmt-btn" asp-controller="NewAccount" asp-action="RegisterNew">افزودن کارمند</a>
+            <a class="mgmt-btn" asp-controller="Employeemenu" asp-action="Requests">درخواست‌های کارکنان</a>
+        </div>
+
+
+        </div>
+
+        <!-- پروفایل (چپ) -->
+        <div class="mgmt-left">
+            
+            <form asp-controller="Account" asp-action="Logout" method="post" class="mgmt-logout-form">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="mgmt-logout-btn">خروج</button>
+            </form>
+            
+            <img src="@(User.FindFirst("Photo")?.Value ?? "/images/userdefult.png")"
+                class="mgmt-profile-photo" />
+
+            
+
+            <div class="mgmt-profile-info">
+                <div class="mgmt-profile-name">
+                    @User.Identity?.Name
+                </div>
+                <div class="mgmt-profile-role">
+                    @User.FindFirst(ClaimTypes.Role)?.Value
+                </div>
+            </div>
+
+            
+        </div>
+
+
+
+    </div>
+        <div class="mgmt-page-indicator">
+        <span class="mgmt-page-icon">📄</span>
+        <span class="mgmt-page-title">@nameSubpage</span>
+     </div>
+
+    <div class="mgmt-content">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

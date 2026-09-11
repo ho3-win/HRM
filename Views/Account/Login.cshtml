@@ -1,0 +1,47 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h2>Login</h2>
+    @if (ViewBag.Error != null)
+    {
+        <div style="color: red; margin-bottom: 10px; text-align:center;">
+            @ViewBag.Error
+        </div>
+    }
+
+    <form asp-controller="Account" asp-action="Login" method="post">
+
+        <div class="input-box">
+            <input type="text" name="username" placeholder="Username" required />
+        </div>
+
+        <div class="input-box">
+            <input type="password" name="password" placeholder="Password" required />
+        </div>
+
+    
+
+
+        <button class="login-btn" type="submit">
+            ورود
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
