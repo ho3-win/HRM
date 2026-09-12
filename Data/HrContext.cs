@@ -48,7 +48,7 @@ namespace Mhrm.Data
             //  User ↔ Employee (1 to 1)
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Employee)
-                .WithOne()
+                .WithOne(e => e.User)
                 .HasForeignKey<User>(u => u.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
