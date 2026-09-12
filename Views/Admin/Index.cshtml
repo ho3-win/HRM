@@ -1,226 +1,102 @@
 @model List<NewsVM>
 
 @{
-    ViewData["Title"] = "MHRM ";
+    ViewData["Title"] = "داشبورد مدیریت";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
 
-<style>
-    body {
-        font-family: Tahoma, sans-serif;
-        background: #f5f5f5;
-    }
-
-    .category{
-    margin:15px  0px;
-    font-size:13px;
-    color: #555;
-}
-
-    .btn-status{
-        padding:6px 12px;
-        border:none;
-        border-radius:6px;
-        cursor:pointer;
-        font-size:13px;
-        margin-top:8px;
-    }
-
-    .btn-status.active{
-        background:#dc3545;
-        color:#fff;
-    }
-
-    .btn-status.inactive{
-        background:#28a745;
-        color:#fff;
-    }
-
-    .card.important{
-        border:2px solid #dc3545 !important;
-    }
-
-    .container {
-        max-width: 100%;
-        margin: auto;
-        direction: rtl;
-        text-align: right;
-    }
-
-    /* Header */
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 20px 0;
-    }
-
-    .btn {
-        background: #efd13b;
-        color: black;
-        padding: 10px 15px;
-        border-radius: 8px;
-        text-decoration: none;
-        display: inline-block;
-        margin-right:auto;
-        
-    }
-
-    .btn:hover {
-        background: #ffcc02;
-    }
-
-    /* Grid */
-    .grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .card {
-        width: 100%;
-        background: white;
-        border-radius: 12px;
-        border:2px solid gold;
-        overflow: hidden;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        transition: 0.2s;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    .card img {
-        
-        width: 100%;
-       
-        border: 2px solid gold;
-        height: auto;
-        object-fit: cover;
-        background: #ddd;
-    }
-
-    .card-body {
-        padding: 12px;
-    }
-
-    .title {
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-
-    .text {
-        font-size: 14px;
-        color: #555;
-        line-height: 1.6;
-    }
-
-    .footer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-        font-size: 12px;
-        color: #777;
-    }
-
-    .badge {
-        background: #dc3545;
-        color: white;
-        padding: 3px 8px;
-        border-radius: 6px;
-        font-size: 11px;
-    }
-
-    .empty {
-        text-align: center;
-        padding: 50px;
-        background: white;
-        border-radius: 12px;
-    }
-
-    .delete-bt
-    {
-        background: #f5e902;
-        color: #200707;
-        border:none;
-        margin-top: 5px;
-        padding:6px 12px;
-        border-radius:6px;
-        cursor:pointer;
-    }
-
-
-    /* Responsive 
-    @* @media(max-width: 900px) {
-        .card {
-            width: calc(50% - 10px);
-        }
-    }
-
-    @media(max-width: 600px) {
-        .card {
-            width: 100%;
-        }
-    } *@*/
-</style>
-
-<div class="container">
-
-    
-    <div class="header">
-        
-        <a class="btn" asp-action="Createnew">New news</a>
+<div class="dashboard-grid">
+    <div class="card">
+        <div class="card-info">
+            <h3>تعداد کل کارکنان</h3>
+            <div class="value">۱۲۸ نفر</div>
+        </div>
+        <div class="card-icon">
+            <i class="fa-solid fa-users-gear"></i>
+        </div>
     </div>
 
-    
-    @if (TempData["Success"] != null)
-    {
-        <div style="background:#d4edda;padding:10px;border-radius:8px;margin-bottom:15px;">
-            @TempData["Success"]
+    <div class="card">
+        <div class="card-info">
+            <h3>آخرین خبر ثبت‌شده</h3>
+            <div class="value" style="font-size:1.1rem;">تغییر ساعات کاری تابستان</div>
         </div>
-    }
+        <div class="card-icon">
+            <i class="fa-solid fa-bullhorn"></i>
+        </div>
+    </div>
 
-  
+    <div class="card time-card">
+        <div class="card-info">
+            <h3>ساعت و تاریخ زنده</h3>
+            <div class="value" id="liveClock">00:00:00</div>
+            <div id="liveDate" style="font-size:0.8rem; margin-top:5px; color:#ecf0f1;">-</div>
+        </div>
+        <div class="card-icon" style="background: rgba(255,255,255,0.1); color: #f1c40f;">
+            <i class="fa-regular fa-clock"></i>
+        </div>
+    </div>
+</div>
+
+<div class="banner-section">
+    <img src="~/images/LOGO.jpg" alt="MHRM Logo" class="banner-logo" />
+    <h2>به سامانه مدیریت منابع انسانی خوش آمدید</h2>
+    <p>
+        این سامانه با هدف تسهیل فرآیندهای اداری، دسترسی سریع به اطلاعات کارکنان، ثبت درخواست‌ها،
+        مشاهده اطلاعیه‌ها و بهبود ارتباطات سازمان طراحی شده است.
+    </p>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div style="background:#d4edda;padding:10px;border-radius:8px;margin:20px 0;">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="news-section">
+    <div class="news-topbar">
+        <h3 style="font-size:1.1rem; color: var(--dark-gray);">اخبار و اطلاعیه‌ها</h3>
+        <a class="btn" asp-action="Createnew">افزودن خبر</a>
+    </div>
+
     @if (!Model.Any())
     {
-        <div class="empty">
+        <div class="news-empty">
             <h3>هیچ خبری وجود ندارد</h3>
             <p>برای شروع یک خبر جدید اضافه کنید</p>
         </div>
     }
     else
     {
-        <div class="grid">
-
+        <div class="news-grid">
             @foreach (var item in Model)
             {
-                <div class="card @(item.IsImportant ? "important" : "")">
-
+                <div class="news-card @(item.IsImportant ? "important" : "")">
                     @if (!string.IsNullOrEmpty(item.FilePath))
                     {
                         var ext = System.IO.Path.GetExtension(item.FilePath).ToLower();
 
                         if (ext == ".mp4" || ext == ".webm" || ext == ".ogg")
                         {
-                            <video controls width="100%" height="auto">
+                            <video controls>
                                 <source src="@item.FilePath" type="video/mp4" />
                                 مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
                             </video>
                         }
                         else
                         {
-                            <img src="@item.FilePath" />
+                            <img src="@item.FilePath" alt="@item.Title" />
                         }
                     }
                     else
                     {
-                        <div style="height:200px;background:#ccc;display:flex;align-items:center;justify-content:center;">
+                        <div style="height:180px;background:#ccc;display:flex;align-items:center;justify-content:center;color:#444;">
                             بدون فایل
                         </div>
                     }
 
-                    <div class="card-body">
+                    <div class="news-card-body">
                         <div class="category">
                             دسته‌بندی:
                             @switch (item.Category)
@@ -251,53 +127,44 @@
                         </div>
 
                         <div class="footer">
-
                             <span>@item.CreatedAt.ToString("yyyy/MM/dd")</span>
-
                             @if (!item.IsActive)
                             {
                                 <span class="badge">غیرفعال</span>
                             }
-
                         </div>
-                        <div>
-                            منتشر کننده:
-                            @item.EmployeeFirstName
-                            @item.EmployeeLastName
-                            (@item.EmployeeId)
+
+                        <div class="meta" style="margin-top: 12px; font-size: 12px; color: #666;">
+                            منتشر کننده: @item.EmployeeFirstName @item.EmployeeLastName (@item.EmployeeId)
                         </div>
-                        <form asp-action="Delete" method="post" style="display:inline;">
-                            <input type="hidden" name="id" value="@item.Id" />
-                            
-                            <button class="delete-bt" type="submit"
-                                    onclick="return confirm('آیا از حذف این خبر مطمئن هستید؟')"
-                                   >
-                                حذف
-                            </button>
-                        </form>
-                        <form asp-action="ToggleActive" method="post" style="display:inline;">
-                            <input type="hidden" name="id" value="@item.Id" />
 
-                            @if (item.IsActive)
-                            {
-                                <button type="submit" class="btn-status active">
-                                    غیرفعال کردن
+                        <div class="news-actions">
+                            <form asp-action="Delete" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button class="delete-bt" type="submit" onclick="return confirm('آیا از حذف این خبر مطمئن هستید؟')">
+                                    حذف
                                 </button>
-                            }
-                            else
-                            {
-                                <button type="submit" class="btn-status inactive">
-                                    فعال کردن
-                                </button>
-                            }
-                        </form>
+                            </form>
 
+                            <form asp-action="ToggleActive" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                @if (item.IsActive)
+                                {
+                                    <button type="submit" class="btn-status active">
+                                        غیرفعال کردن
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn-status inactive">
+                                        فعال کردن
+                                    </button>
+                                }
+                            </form>
+                        </div>
                     </div>
-
                 </div>
             }
-
         </div>
     }
-
 </div>

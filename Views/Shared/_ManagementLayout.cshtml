@@ -1,86 +1,139 @@
 @using System.Security.Claims
 
-
-
 @{
-    var nameSubpage =ViewBag.nameSubpage;
+    var nameSubpage = ViewBag.nameSubpage;
 }
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
 
-    <link rel="stylesheet" href="~/css/management-header.css" />
-
-   
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"
+          type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/management-header.css" asp-append-version="true" />
 </head>
 
 <body>
-
-    <div class="mgmt-topbar">
-
-        <!-- لوگو (راست) -->
-        <div class="mgmt-right">
-           <span class="mgmt-brand-name">MHRM</span>
-
-           <img src="~/images/Logo.png" class="mgmt-logo" />
-
-            
+    <header>
+        <div class="header-right">
+            <button class="toggle-btn" id="sidebarToggle" title="تغییر وضعیت سایدبار" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="@Url.Action("Index", "Admin")" class="logo-section">
+                <img src="~/images/Logo.png" alt="MHRM Logo" class="site-logo" />
+                <span>MHRM</span>
+            </a>
         </div>
 
-        <!-- منوهای وسط -->
-        <div class="mgmt-center">
+        <div class="header-left">
+            <button class="settings-btn" title="تنظیمات کاربری" type="button">
+                <i class="fa-solid fa-gear"></i>
+            </button>
 
-            
-           
-        <div class="mgmt-dropdown">
-            <a class="mgmt-btn" asp-controller="Admin" asp-action="Index">  صفحه اصلی  </a>
-            <a class="mgmt-btn" asp-controller="Employeemenu" asp-action="List">لیست کارکنان</a>
-            <a class="mgmt-btn" asp-controller="NewAccount" asp-action="RegisterNew">افزودن کارمند</a>
-            <a class="mgmt-btn" asp-controller="Employeemenu" asp-action="Requests">درخواست‌های کارکنان</a>
-        </div>
-
-
-        </div>
-
-        <!-- پروفایل (چپ) -->
-        <div class="mgmt-left">
-            
-            <form asp-controller="Account" asp-action="Logout" method="post" class="mgmt-logout-form">
-                @Html.AntiForgeryToken()
-                <button type="submit" class="mgmt-logout-btn">خروج</button>
-            </form>
-            
-            <img src="@(User.FindFirst("Photo")?.Value ?? "/images/userdefult.png")"
-                class="mgmt-profile-photo" />
-
-            
-
-            <div class="mgmt-profile-info">
-                <div class="mgmt-profile-name">
-                    @User.Identity?.Name
-                </div>
-                <div class="mgmt-profile-role">
-                    @User.FindFirst(ClaimTypes.Role)?.Value
+            <div class="user-profile" title="پروفایل کاربر">
+                <img src="@(User.FindFirst("Photo")?.Value ?? Url.Content("~/images/Userdefult.png"))" alt="عکس کاربر"
+                     class="avatar-img" />
+                <div class="user-info">
+                    <div style="font-weight: bold;">@User.Identity?.Name</div>
+                    <div class="role">@User.FindFirst(ClaimTypes.Role)?.Value</div>
                 </div>
             </div>
-
-            
         </div>
+    </header>
 
+    <div class="layout-container">
+        <aside class="sidebar">
+            <ul class="menu-list">
+                <li class="menu-item active">
+                    <a asp-controller="Admin" asp-action="Index">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="menu-text">صفحه اصلی</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a asp-controller="Employeemenu" asp-action="List">
+                        <i class="fa-solid fa-users"></i>
+                        <span class="menu-text">لیست کارکنان</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a asp-controller="NewAccount" asp-action="RegisterNew">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span class="menu-text">افزودن کارمند</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a asp-controller="Employeemenu" asp-action="Requests">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span class="menu-text">درخواست‌های کارکنان</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a asp-controller="Admin" asp-action="Createnew">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span class="menu-text">افزودن خبر</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <i class="fa-solid fa-robot"></i>
+                        <span class="menu-text">دستیار هوش مصنوعی</span>
+                    </a>
+                </li>
+                <li class="menu-item logout-item">
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="logout-btn">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span class="menu-text">خروج</span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </aside>
 
+        <main class="content">
+            <div class="page-indicator">
+                <span class="page-icon">📄</span>
+                <span class="page-title">@nameSubpage</span>
+            </div>
 
+            @RenderBody()
+        </main>
     </div>
-        <div class="mgmt-page-indicator">
-        <span class="mgmt-page-icon">📄</span>
-        <span class="mgmt-page-title">@nameSubpage</span>
-     </div>
 
-    <div class="mgmt-content">
-        @RenderBody()
-    </div>
+    <script>
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('collapsed');
+                });
+            }
 
+            function updateClock() {
+                const clock = document.getElementById('liveClock');
+                const dateEl = document.getElementById('liveDate');
+                if (!clock) return;
+
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                clock.textContent = `${hours}:${minutes}:${seconds}`;
+
+                if (dateEl) {
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    dateEl.textContent = now.toLocaleDateString('fa-IR', options);
+                }
+            }
+
+            setInterval(updateClock, 1000);
+            updateClock();
+    </script>
 </body>
+
 </html>
