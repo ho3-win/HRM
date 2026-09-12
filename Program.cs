@@ -9,6 +9,7 @@ builder.Services.AddDbContext<HrDbContext>(options =>
 );
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
 
 //  AUTHENTICATION 
 builder.Services.AddAuthentication("CookieAuth")
