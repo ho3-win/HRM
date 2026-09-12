@@ -1,6 +1,24 @@
 @{
     ViewData["Title"] = "لیست کارکنان";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+
+    string GetAgeText(DateTime? birthDate)
+    {
+        if (birthDate == null)
+        {
+            return "نامشخص";
+        }
+
+        var today = DateTime.Today;
+        var age = today.Year - birthDate.Value.Year;
+
+        if (birthDate.Value.Date > today.AddYears(-age))
+        {
+            age--;
+        }
+
+        return age >= 0 ? $"{age} سال" : "نامشخص";
+    }
 }
 
 @model List<Mhrm.Models.ViewModels.EmployeeDetails>
@@ -10,63 +28,202 @@
         direction: rtl;
         text-align: right;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0 8px;
     }
 
-    .employee-table-wrap {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    .employee-card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
         border: 1px solid #edf2f7;
-        padding: 18px;
+        width: min(100%, 1280px);
+        margin: 0 auto;
+    }
+
+    .card-header-custom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #eef2f7;
+    }
+
+    .header-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #1e293b;
+    }
+
+    .header-title i {
+        color: #fbc02d;
+        font-size: 1.6rem;
+    }
+
+    .header-title h3 {
+        font-size: 1.3rem;
+        font-weight: 800;
+    }
+
+    .btn-add-employee {
+        background: linear-gradient(135deg, #fbc02d, #f57f17);
+        color: #000;
+        padding: 10px 22px;
+        border-radius: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 15px rgba(251, 192, 45, 0.3);
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-add-employee:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(251, 192, 45, 0.45);
+    }
+
+    .table-responsive {
         overflow-x: auto;
     }
 
-    .employee-table {
+    .luxury-table {
         width: 100%;
-        border-collapse: collapse;
-        min-width: 900px;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        min-width: 980px;
     }
 
-    .employee-table th,
-    .employee-table td {
-        padding: 14px 12px;
-        border-bottom: 1px solid #eef2f7;
-        text-align: right;
-        vertical-align: middle;
-        font-size: 14px;
-    }
-
-    .employee-table thead th {
-        background: #f8fafc;
-        color: #334155;
+    .luxury-table th {
+        padding: 14px 18px;
+        color: #64748b;
+        font-size: 0.85rem;
         font-weight: 700;
+        border-bottom: 2px solid #eef2f7;
+        text-align: right;
     }
 
-    .employee-table tbody tr:hover {
-        background: #f8fbff;
+    .luxury-table td {
+        padding: 16px 18px;
+        background: #fafafa;
+        color: #334155;
+        font-size: 0.92rem;
+        vertical-align: middle;
+        transition: all 0.2s ease;
     }
 
-    .employee-table a {
-        color: #1f2937;
+    .luxury-table tr td:first-child {
+        border-radius: 0 16px 16px 0;
+    }
+
+    .luxury-table tr td:last-child {
+        border-radius: 16px 0 0 16px;
+    }
+
+    .luxury-table tbody tr:hover td {
+        background: #f1f5f9;
+    }
+
+    .user-name {
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .personnel-code {
+        color: #0284c7;
+        font-weight: 800;
+        font-size: 0.88rem;
+        background: #e0f2fe;
+        padding: 4px 10px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    .role-badge {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        display: inline-block;
+    }
+
+    .role-badge.admin {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    .role-badge.user {
+        background: #fef08a;
+        color: #854d0e;
+    }
+
+    .action-btns {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn-action {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
         text-decoration: none;
     }
 
-    .employee-table a:hover {
-        color: #1d4ed8;
+    .btn-action.edit {
+        background: #fef9c3;
+        color: #ca8a04;
     }
 
-    .btn-delete-employee {
-        border: none;
-        background: transparent;
-        color: #dc2626;
-        font-size: 18px;
-        cursor: pointer;
+    .btn-action.edit:hover {
+        background: #fde047;
+    }
+
+    .btn-action.delete {
+        background: #fef2f2;
+        color: #ef4444;
+    }
+
+    .btn-action.delete:hover {
+        background: #fca5a5;
+        color: #fff;
+    }
+
+    .font-en {
+        font-family: monospace;
+        letter-spacing: 0.5px;
+    }
+
+    .bio-text {
+        color: #64748b;
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .text-center {
+        text-align: center;
     }
 
     .employee-empty {
         background: #fff;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         color: #6b7280;
         padding: 24px;
         text-align: center;
@@ -76,68 +233,94 @@
 <div class="employee-list-page">
     @if (Model != null && Model.Any())
     {
-        <div class="employee-table-wrap">
-            <table class="employee-table">
-                <thead>
-                    <tr>
-                        <th>شناسه</th>
-                        <th>نام و نام خانوادگی</th>
-                        <th>کد ملی</th>
-                        <th>تلفن</th>
-                        <th>نقش</th>
-                        <th>نام کاربری</th>
-                        <th>بیو</th>
-                        <th>حذف</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var emp in Model)
-                    {
+        <div class="employee-card">
+            <div class="card-header-custom">
+                <div class="header-title">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>لیست کامل کارکنان</h3>
+                </div>
+                <a asp-controller="NewAccount" asp-action="RegisterNew" class="btn-add-employee">
+                    <i class="fa-solid fa-user-plus"></i>
+                    افزودن کارمند جدید
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="luxury-table">
+                    <thead>
                         <tr>
-                            <td>
-                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
-                                    @emp.Employee.Id
-                                </a>
-                            </td>
-                            <td>
-                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
-                                    @emp.Employee.FirstName @emp.Employee.LastName
-                                </a>
-                            </td>
-                            <td>
-                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
-                                    @emp.Employee.National_id
-                                </a>
-                            </td>
-                            <td>
-                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
-                                    @emp.Employee.Phone
-                                </a>
-                            </td>
-                            <td>
-                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
-                                    @(emp.User != null ? emp.User.RoleId.ToString() : "ندارد")
-                                </a>
-                            </td>
-                            <td>
-                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
-                                    @(emp.User != null ? emp.User.Username : "ندارد")
-                                </a>
-                            </td>
-                            <td>
-                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
-                                    @(emp.User != null ? emp.User.Bio : "ندارد")
-                                </a>
-                            </td>
-                            <td>
-                                <button type="button" class="btn-delete-employee" data-id="@emp.Employee.Id" title="حذف کارمند">
-                                    ❌
-                                </button>
-                            </td>
+                            <th>کد پرسنلی</th>
+                            <th>نام و نام خانوادگی</th>
+                            <th>سن</th>
+                            <th>تلفن</th>
+                            <th>نقش</th>
+                            <th>نام کاربری</th>
+                            <th>بیو</th>
+                            <th class="text-center">عملیات</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var emp in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
+                                        <span class="personnel-code font-en">EMP-@emp.Employee.Id</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
+                                        <span class="user-name">@emp.Employee.FirstName @emp.Employee.LastName</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
+                                        @(GetAgeText(emp.Employee.BirthDate))
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
+                                        <span class="font-en">@emp.Employee.Phone</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
+                                        <span class="role-badge @(emp.User != null && emp.User.RoleId == 1 ? "admin" : "user")">
+                                            @(emp.User != null ? (emp.User.RoleId == 1 ? "مدیر سیستم" : "کارمند") : "ندارد")
+                                            @(emp.User != null ? $"({emp.User.RoleId})" : "")
+                                        </span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
+                                        <span class="font-en">@(emp.User != null ? emp.User.Username : "ندارد")</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
+                                        <span class="bio-text"
+                                              title="@(emp.User != null && !string.IsNullOrWhiteSpace(emp.User.Bio) ? emp.User.Bio : "-")">
+                                            @(emp.User != null && !string.IsNullOrWhiteSpace(emp.User.Bio) ? emp.User.Bio : "-")
+                                        </span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="action-btns">
+                                        <a class="btn-action edit" asp-controller="Employeemenu" asp-action="Details"
+                                           asp-route-id="@emp.Employee.Id" title="ویرایش">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <button type="button" class="btn-action delete btn-delete-employee"
+                                                data-id="@emp.Employee.Id" title="حذف">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     }
     else
@@ -149,28 +332,28 @@
 </div>
 
 <script>
-document.querySelectorAll(".btn-delete-employee").forEach(btn => {
-    btn.addEventListener("click", async () => {
-        const id = btn.dataset.id;
-        if (!confirm("آیا از حذف این کارمند مطمئن هستید؟")) return;
+    document.querySelectorAll(".btn-delete-employee").forEach(btn => {
+        btn.addEventListener("click", async () => {
+            const id = btn.dataset.id;
+            if (!confirm("آیا از حذف این کارمند مطمئن هستید؟")) return;
 
-        try {
-            const res = await fetch("@Url.Action("DeleteEmployee", "NewAccount")", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(id)
-            });
+            try {
+                const res = await fetch("@Url.Action("DeleteEmployee", "NewAccount")", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(id)
+                });
 
-            if (res.ok) {
-                btn.closest("tr").remove();
-                alert("کارمند با موفقیت حذف شد ✅");
-            } else {
-                alert("خطا در حذف کارمند ❌");
+                if (res.ok) {
+                    btn.closest("tr").remove();
+                    alert("کارمند با موفقیت حذف شد ✅");
+                } else {
+                    alert("خطا در حذف کارمند ❌");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("خطا در ارتباط با سرور.");
             }
-        } catch (err) {
-            console.error(err);
-            alert("خطا در ارتباط با سرور.");
-        }
+        });
     });
-});
 </script>
