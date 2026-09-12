@@ -1,0 +1,404 @@
+@{
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+    ViewData["Title"] = "دستیار هوش مصنوعی";
+    ViewBag.nameSubpage = "دستیار هوش مصنوعی";
+}
+
+<style>
+    :root {
+        --mhrm-yellow: #f1c40f;
+        --mhrm-yellow-dark: #d9a700;
+        --mhrm-yellow-soft: #fff7d6;
+        --mhrm-text: #1f2937;
+        --mhrm-muted: #6b7280;
+        --mhrm-border: #e5e7eb;
+        --mhrm-bg: #f8fafc;
+        --mhrm-card: #ffffff;
+    }
+
+    .assistant-page {
+        direction: rtl;
+        padding: 0 0 24px;
+        min-height: calc(100vh - 200px);
+    }
+
+    .assistant-shell {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 290px minmax(0, 1fr);
+        gap: 20px;
+        min-height: 70vh;
+    }
+
+    .assistant-sidebar,
+    .assistant-main {
+        background: var(--mhrm-card);
+        border: 1px solid rgba(241, 196, 15, 0.22);
+        border-radius: 22px;
+        box-shadow: 0 12px 32px rgba(17, 24, 39, 0.06);
+    }
+
+    .assistant-sidebar {
+        padding: 18px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .assistant-new-chat {
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--mhrm-yellow), #f7d95b);
+        color: var(--mhrm-text);
+        font-weight: 700;
+        padding: 14px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .assistant-history {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        overflow: auto;
+    }
+
+    .assistant-history li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--mhrm-muted);
+        background: #f9fafb;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        padding: 11px 12px;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+    }
+
+    .assistant-history li.active {
+        background: var(--mhrm-yellow-soft);
+        border-color: rgba(241, 196, 15, 0.5);
+        color: var(--mhrm-text);
+        font-weight: 700;
+    }
+
+    .assistant-main {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .assistant-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--mhrm-border);
+        background: linear-gradient(180deg, #fffdf3, #fff);
+    }
+
+    .assistant-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .assistant-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--mhrm-yellow), #f9d85a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--mhrm-text);
+        font-size: 1.1rem;
+        box-shadow: 0 8px 18px rgba(241, 196, 15, 0.25);
+    }
+
+    .assistant-title {
+        font-size: 1rem;
+        font-weight: 800;
+        margin: 0;
+        color: var(--mhrm-text);
+    }
+
+    .assistant-status {
+        font-size: 0.75rem;
+        color: #16a34a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .assistant-status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+    }
+
+    .assistant-chat {
+        flex: 1;
+        overflow-y: auto;
+        padding: 24px 20px;
+        background: linear-gradient(180deg, #fdfdfd, #f8fafc);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .message {
+        display: flex;
+        gap: 12px;
+        max-width: 78%;
+    }
+
+    .message.user {
+        align-self: flex-end;
+        flex-direction: row-reverse;
+    }
+
+    .message.ai {
+        align-self: flex-start;
+    }
+
+    .message-bubble {
+        border-radius: 18px;
+        padding: 14px 16px;
+        line-height: 1.8;
+        font-size: 0.95rem;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .message.user .message-bubble {
+        background: linear-gradient(135deg, var(--mhrm-yellow), #f6d34b);
+        color: #1f2937;
+        border-top-left-radius: 5px;
+    }
+
+    .message.ai .message-bubble {
+        background: white;
+        color: var(--mhrm-text);
+        border: 1px solid var(--mhrm-border);
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.03);
+        border-top-right-radius: 5px;
+    }
+
+    .message-time {
+        text-align: left;
+        color: var(--mhrm-muted);
+        font-size: 0.7rem;
+        margin-top: 6px;
+    }
+
+    .message.user .message-time {
+        text-align: right;
+    }
+
+    .assistant-input-wrap {
+        border-top: 1px solid var(--mhrm-border);
+        padding: 18px 18px 20px;
+        background: #fff;
+    }
+
+    .assistant-input {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        border: 1px solid rgba(241, 196, 15, 0.4);
+        border-radius: 18px;
+        background: #fffdf6;
+        padding: 10px 12px 10px 10px;
+    }
+
+    .assistant-input textarea {
+        flex: 1;
+        border: none;
+        outline: none;
+        resize: none;
+        min-height: 45px;
+        max-height: 150px;
+        padding: 10px 12px;
+        font-size: 0.94rem;
+        background: transparent;
+        color: var(--mhrm-text);
+    }
+
+    .assistant-send {
+        width: 48px;
+        height: 48px;
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--mhrm-yellow), var(--mhrm-yellow-dark));
+        color: var(--mhrm-text);
+        cursor: pointer;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 18px rgba(241, 196, 15, 0.2);
+    }
+
+    .assistant-send:disabled {
+        opacity: 0.7;
+        cursor: wait;
+    }
+
+    @@media (max-width: 900px) {
+        .assistant-shell {
+            grid-template-columns: 1fr;
+        }
+
+        .assistant-sidebar {
+            order: 2;
+        }
+
+        .assistant-main {
+            order: 1;
+        }
+    }
+</style>
+
+<div class="assistant-page">
+    <div class="assistant-shell">
+        <aside class="assistant-sidebar">
+            <button class="assistant-new-chat" type="button" id="newChatBtn">
+                <span>＋</span>
+                <span>گفتگوی جدید</span>
+            </button>
+
+            <ul class="assistant-history">
+                <li class="active"><span>💬</span><span>راهنمایی مرخصی</span></li>
+                <li><span>💬</span><span>سوالات عمومی</span></li>
+                <li><span>💬</span><span>قوانین ساعت کاری</span></li>
+            </ul>
+        </aside>
+
+        <main class="assistant-main">
+            <div class="assistant-header">
+                <div class="assistant-title-wrap">
+                    <div class="assistant-avatar">🤖</div>
+                    <div>
+                        <h4 class="assistant-title">دستیار هوشمند منابع انسانی</h4>
+                        <div class="assistant-status"><span class="assistant-status-dot"></span> آنلاین و آماده پاسخگویی
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assistant-chat" id="assistantChat">
+                <div class="message ai">
+                    <div class="assistant-avatar" style="width:32px; height:32px; font-size:0.9rem;">🤖</div>
+                    <div>
+                        <div class="message-bubble">سلام! من دستیار هوشمند MHRM هستم. می‌توانم درباره قوانین، مرخصی،
+                            درخواست‌ها و مسائل HR به شما کمک کنم.</div>
+                            <div class="message-time">همین حالا</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="assistant-input-wrap">
+                    <div class="assistant-input">
+                        <textarea id="questionInput" rows="1" placeholder="سوال خود را بنویسید..."></textarea>
+                        <button id="sendQuestion" class="assistant-send" type="button" title="ارسال">➤</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const chat = document.getElementById('assistantChat');
+        const input = document.getElementById('questionInput');
+        const sendButton = document.getElementById('sendQuestion');
+        const newChatBtn = document.getElementById('newChatBtn');
+
+        function addMessage(text, sender) {
+            const message = document.createElement('div');
+            message.className = 'message ' + sender;
+
+            const time = new Date();
+            const formattedTime = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString().padStart(2, '0');
+
+            if (sender === 'ai') {
+                message.innerHTML = `
+                        <div class="assistant-avatar" style="width:32px; height:32px; font-size:0.9rem;">🤖</div>
+                        <div>
+                            <div class="message-bubble">${text}</div>
+                            <div class="message-time">${formattedTime}</div>
+                        </div>
+                    `;
+            } else {
+                message.innerHTML = `
+                        <div>
+                            <div class="message-bubble">${text}</div>
+                            <div class="message-time">${formattedTime}</div>
+                        </div>
+                    `;
+            }
+
+            chat.appendChild(message);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function setLoading(isLoading) {
+            sendButton.disabled = isLoading;
+            sendButton.textContent = isLoading ? '…' : '➤';
+        }
+
+        async function sendQuestion() {
+            const question = input.value.trim();
+            if (!question) return;
+
+            addMessage(question, 'user');
+            input.value = '';
+            input.style.height = 'auto';
+            setLoading(true);
+
+            try {
+                const response = await fetch('@Url.Action("AskAi", "Home")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+                    body: new URLSearchParams({ question })
+                });
+
+                const result = await response.json();
+                const answer = result?.answer || 'پاسخی دریافت نشد.';
+                addMessage(answer, 'ai');
+            } catch (error) {
+                addMessage('در ارتباط با دستیار هوشمند خطایی رخ داد. لطفاً دوباره تلاش کنید.', 'ai');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        sendButton.addEventListener('click', sendQuestion);
+
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendQuestion();
+            }
+        });
+
+        newChatBtn.addEventListener('click', function () {
+            while (chat.firstChild) {
+                chat.removeChild(chat.firstChild);
+            }
+
+            addMessage('سلام! من دستیار هوشمند MHRM هستم. می‌توانم درباره قوانین، مرخصی، درخواست‌ها و مسائل HR به شما کمک کنم.', 'ai');
+        });
+    </script>

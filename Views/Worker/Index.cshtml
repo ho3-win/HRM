@@ -1,260 +1,362 @@
 @model List<NewsVM>
 @{
     Layout = "~/Views/Shared/_WorkerLayout.cshtml";
-    ViewData["Title"] = "MHRM ";
+    ViewData["Title"] = "پنل کاربر";
+    var latestNews = Model.FirstOrDefault();
 }
 
-
 <style>
-    body {
-        font-family: Tahoma, sans-serif;
-        background: #f5f5f5;
+    :root {
+        --primary-yellow: #f1b80d;
+        --dark-text: #1e1e24;
+        --card-bg: #ffffff;
+        --text-main: #2b2b2b;
+        --text-muted: #6c757d;
+        --border-radius: 20px;
     }
 
-    .category{
-        margin:15px  0px;
-        font-size:13px;
-        color: #555;
-    }
-
-    .card.important{
-        border:2px solid #dc3545 !important;
-    }
-
-    .important-card{
-        border:2px solid #dc3545;
-        box-shadow:0 0 10px rgba(220,53,69,0.2);
-    }
-
-    .container {
-        max-width: 100%;
-        margin: auto;
+    .worker-dashboard {
+        font-family: Tahoma, 'Vazirmatn', sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
         direction: rtl;
-        text-align: right;
     }
 
-    .header {
+    .worker-dashboard * {
+        box-sizing: border-box;
+    }
+
+    .worker-dashboard .profile-logout {
+        margin-right: auto;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        margin: 20px 0;
+        justify-content: center;
     }
 
-    .btn {
-        background: #efd13b;
-        color: black;
-        padding: 10px 15px;
-        border-radius: 8px;
+    .worker-dashboard .logout-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--primary-yellow);
+        border: none;
+        color: var(--dark-text);
         text-decoration: none;
-        display: inline-block;
-        margin-right:auto;
-        
+        font-weight: bold;
+        font-size: 1.05rem;
+        padding: 10px 16px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: filter 0.2s ease;
     }
 
-    .btn:hover {
-        background: #ffcc02;
+    .worker-dashboard .logout-btn:hover {
+        filter: brightness(0.96);
     }
 
-    .grid {
+    .worker-dashboard .dashboard-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 30px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .worker-dashboard .profile-card {
+        background: linear-gradient(135deg, #fff8d6 0%, #ffffff 100%);
+        border-radius: var(--border-radius);
+        padding: 30px 35px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-right: 8px solid #d9b209;
+    }
+
+    .worker-dashboard .avatar-wrapper {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        flex-shrink: 0;
+    }
+
+    .worker-dashboard .avatar-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--primary-yellow);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .worker-dashboard .profile-info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .worker-dashboard .user-name {
+        margin: 0;
+        font-size: 1.6rem;
+        color: var(--text-main);
+        font-weight: bold;
+    }
+
+    .worker-dashboard .info-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .card {
-        width: 100%;
-        background: white;
-        border-radius: 12px;
-        border:2px solid gold;
-        overflow: hidden;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        transition: 0.2s;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    .card img {
-        
-        width: 100%;
-       
-        border: 2px solid gold;
-        height: auto;
-        object-fit: cover;
-        background: #ddd;
-    }
-
-    .card-body {
-        padding: 12px;
-    }
-
-    .title {
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-
-    .text {
-        font-size: 14px;
-        color: #555;
-        line-height: 1.6;
-    }
-
-    .footer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-        font-size: 12px;
-        color: #777;
-    }
-
-    .badge {
-        background: #dc3545;
-        color: white;
-        padding: 3px 8px;
-        border-radius: 6px;
-        font-size: 11px;
-    }
-
-    .empty {
-        text-align: center;
-        padding: 50px;
-        background: white;
-        border-radius: 12px;
-    }
-
-    .delete-bt
-    {
-        background: #f5e902;
-        color: #200707;
-        border:none;
+        gap: 25px;
         margin-top: 5px;
-        padding:6px 12px;
-        border-radius:6px;
-        cursor:pointer;
     }
 
+    .worker-dashboard .info-item {
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f8f9fa;
+        padding: 8px 16px;
+        border-radius: 10px;
+    }
 
-    /* Responsive */
-    @* @media(max-width: 900px) {
-        .card {
-            width: calc(50% - 10px);
+    .worker-dashboard .info-item i {
+        color: var(--primary-yellow);
+        font-size: 1.2rem;
+    }
+
+    .worker-dashboard .info-item span {
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    .worker-dashboard .news-card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 25px 35px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        color: var(--text-main);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .worker-dashboard .news-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex: 1;
+    }
+
+    .worker-dashboard .news-badge {
+        background: rgba(241, 184, 13, 0.2);
+        color: #8c6a00;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+    .worker-dashboard .news-text {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 700px;
+    }
+
+    .worker-dashboard .news-action {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        color: var(--text-muted);
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    .worker-dashboard .news-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--primary-yellow);
+        box-shadow: 0 10px 25px rgba(241, 184, 13, 0.18);
+    }
+
+    .worker-dashboard .news-card:hover .news-action i {
+        transform: translateX(-6px);
+    }
+
+    .worker-dashboard .action-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .worker-dashboard .action-card {
+        background: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 35px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        text-decoration: none;
+        color: var(--text-main);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .worker-dashboard .action-card .icon-box {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        background: rgba(241, 184, 13, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #b88a00;
+        transition: all 0.3s ease;
+    }
+
+    .worker-dashboard .action-card span {
+        font-weight: bold;
+        font-size: 1.15rem;
+        text-align: center;
+    }
+
+    .worker-dashboard .action-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--primary-yellow);
+        box-shadow: 0 12px 25px rgba(241, 184, 13, 0.2);
+    }
+
+    .worker-dashboard .action-card:hover .icon-box {
+        background: var(--primary-yellow);
+        color: #fff;
+    }
+
+    @@media (max-width: 992px) {
+        .worker-dashboard .action-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .worker-dashboard .news-text {
+            max-width: 350px;
         }
     }
 
-    @media(max-width: 600px) {
-        .card {
-            width: 100%;
+    @@media (max-width: 576px) {
+        .worker-dashboard .action-grid {
+            grid-template-columns: 1fr;
         }
-    } *@
+
+        .worker-dashboard .profile-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .worker-dashboard .info-grid {
+            justify-content: center;
+        }
+
+        .worker-dashboard .news-card {
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+    }
 </style>
 
-<div class="container">
+<div class="worker-dashboard">
+    <div class="dashboard-container">
+        <div class="profile-card">
+            <div class="avatar-wrapper">
+                <img src="@(User.FindFirst("Photo")?.Value ?? Url.Content("~/images/Userdefult.png"))" alt="عکس پرسنلی"
+                     class="avatar-img" />
+            </div>
 
-    <br/>
-    <br/>
-    <br/>
-
-    @if (TempData["Success"] != null)
-    {
-        <div style="background:#d4edda;padding:10px;border-radius:8px;margin-bottom:15px;">
-            @TempData["Success"]
-        </div>
-    }
-
-    @if (!Model.Any())
-    {
-        <div class="empty">
-            <h3>هیچ خبری وجود ندارد</h3>
-            <p>برای شروع یک خبر جدید اضافه کنید</p>
-        </div>
-    }
-    else
-    {
-        <div class="grid">
-
-            @foreach (var item in Model)
-            {
-                <div class="card @(item.IsImportant ? "important" : "")">
-
-                    @if (!string.IsNullOrEmpty(item.FilePath))
-                    {
-                        var ext = System.IO.Path.GetExtension(item.FilePath).ToLower();
-
-                        if (ext == ".mp4" || ext == ".webm" || ext == ".ogg")
-                        {
-                            <video controls width="100%" height="auto">
-                                <source src="@item.FilePath" type="video/mp4" />
-                                مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
-                            </video>
-                        }
-                        else
-                        {
-                            <img src="@item.FilePath" />
-                        }
-                    }
-                    else
-                    {
-                        <div style="height:200px;background:#ccc;display:flex;align-items:center;justify-content:center;">
-                            بدون فایل
-                        </div>
-                    }
-
-                    <div class="card-body">
-
-                        <div class="category">
-                            دسته‌بندی:
-                            @switch (item.Category)
-                            {
-                                case 0:
-                                    <span>عمومی</span>
-                                    break;
-                                case 1:
-                                    <span>شرکت</span>
-                                    break;
-                                case 2:
-                                    <span>رویداد</span>
-                                    break;
-                                case 3:
-                                    <span>آموزشی</span>
-                                    break;
-                                default:
-                                    <span>سایر</span>
-                                    break;
-                            }
-                        </div>
-                        <div class="title">@item.Title</div>
-
-                        <div class="text">
-                            @(string.IsNullOrEmpty(item.Content)
-                                ? "بدون توضیح"
-                                : item.Content)
-                        </div>
-
-                        <div class="footer">
-
-                            <span>@item.CreatedAt.ToString("yyyy/MM/dd")</span>
-
-                            @if (!item.IsActive)
-                            {
-                                <span class="badge">غیرفعال</span>
-                            }
-
-                        </div>
-                        <div>
-                            منتشر کننده:
-                            @item.EmployeeFirstName
-                            @item.EmployeeLastName
-                            (@item.EmployeeId)
-                        </div>
-                        
-
-                    </div>
-
+            <div class="profile-info">
+                <h2 class="user-name">@User.Identity?.Name</h2>
+                <div class="info-grid">
+                    <div class="info-item"><i class="fa-solid fa-id-card"></i> کد پرسنلی: <span>۱۲۳۴۵۶</span></div>
+                    <div class="info-item"><i class="fa-solid fa-cake-candles"></i> سن: <span>۲۸ سال</span></div>
+                    <div class="info-item"><i class="fa-solid fa-user-check"></i> وضعیت: <span>کارمند فعال</span></div>
                 </div>
-            }
+            </div>
 
+            <div class="profile-logout">
+                <form asp-controller="Account" asp-action="Logout" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="logout-btn">
+                        خروج
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </form>
+            </div>
         </div>
-    }
 
+        @if (latestNews != null)
+        {
+            <a href="@Url.Action("Index", "Worker")" class="news-card">
+                <div class="news-content">
+                    <div class="news-badge"><i class="fa-solid fa-bullhorn"></i> اخبار مهم</div>
+                    <div class="news-text">@latestNews.Title</div>
+                </div>
+                <div class="news-action"><span>مشاهده همه اخبار</span><i class="fa-solid fa-arrow-left"></i></div>
+            </a>
+        }
+
+        <div class="action-grid">
+            <a asp-controller="Worker" asp-action="Details" fragment="contracts" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-file-contract"></i></div>
+                <span>قراردادها</span>
+            </a>
+            <a asp-controller="Worker" asp-action="Details" fragment="documents" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-folder-open"></i></div>
+                <span>مدارک</span>
+            </a>
+            <a asp-controller="Worker" asp-action="Details" fragment="leave-requests" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-calendar-minus"></i></div>
+                <span>مرخصی‌ها</span>
+            </a>
+            <a asp-controller="Worker" asp-action="Details" fragment="requests" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-paper-plane"></i></div>
+                <span>درخواست‌ها</span>
+            </a>
+        </div>
+
+        <div class="action-grid">
+            <a href="#" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-receipt"></i></div>
+                <span>فیش‌های حقوقی</span>
+            </a>
+            <a href="#" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-comment-dots"></i></div>
+                <span>انتقادات و پیشنهادات</span>
+            </a>
+            <a asp-controller="Survey" asp-action="Index" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-poll"></i></div>
+                <span>نظرسنجی‌ها</span>
+            </a>
+            <a href="#" class="action-card">
+                <div class="icon-box"><i class="fa-solid fa-circle-info"></i></div>
+                <span>درباره ما</span>
+            </a>
+        </div>
+    </div>
 </div>

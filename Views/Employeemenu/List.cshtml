@@ -1,469 +1,168 @@
 @{
-    ViewData["Title"] = "Employee";
-}
-
-@{
+    ViewData["Title"] = "لیست کارکنان";
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
 
-
-
 @model List<Mhrm.Models.ViewModels.EmployeeDetails>
 
-
-
-
 <style>
-
-.employee-row {
-    display: grid;
-    grid-template-columns:
-        80px
-        minmax(100px,2fr)
-        minmax(100px,1.5fr)
-        minmax(100px,1fr)
-        90px
-        minmax(100px,1.5fr)
-        minmax(100px,2fr)
-        60px;
-
-    align-items: center;
-    width: 100%;
-    padding: 12px;
-    border: 2px solid  gold;
-    border-radius: 8px;
-    background: #f9fafb;
-    margin-bottom: 8px;
-    gap: 20px;
-    overflow: hidden;
-}
-
-
-.employee-row{
-    overflow: hidden;
-}
-
-.employee-cell{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-.employee-row.header {
-    background: #e5e7eb;
-    font-weight: 700;
-    border-color: #d1d5db;
-}
-
-.employee-row:hover:not(.header) {
-    background: #e0e7ff;
-    border-color: #c7d2fe;
-}
-
-
-
-
-.employee-row:hover {
-    background: #e0e7ff;
-    border-color: #c7d2fe;
-}
-
-.employee-cell {
-    font-size: 14px;
-    color: #333;
-}
-
-.employee-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-.btn-delete-employee {
-    background: none;
-    border: none;
-    color: #dc2626;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-
-   
-
-
-
-
-
-
-
-    .employee-create-page {
-    width: 100%;
-    padding: 40px 40px;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    direction: rtl;
-    }
-
-
-    .employee-create-page * {
-        box-sizing: border-box;
-    }
-
-    .employee-create-page .page-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 30px;
-    }
-
-    .employee-create-page .sidebar {
+    .employee-list-page {
+        direction: rtl;
+        text-align: right;
         width: 100%;
-        background: #ffffff;
+    }
+
+    .employee-table-wrap {
+        background: #fff;
         border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        padding: 15px;
-        max-height: 1400px;
-        overflow-y: auto;
-        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        border: 1px solid #edf2f7;
+        padding: 18px;
+        overflow-x: auto;
     }
 
-    .employee-create-page .sidebar h5 {
-        text-align: center;
-        font-weight: 700;
-        margin: 0 0 15px 0;
-        color: #333;
-        border-bottom: 2px solid #4f46e5;
-        padding-bottom: 10px;
-        font-size: 16px;
-    }
-
-    .employee-create-page .employee-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .employee-create-page .employee-list li {
-        margin-bottom: 8px;
-    }
-
-    .employee-create-page .employee-list a {
-        display: block;
-        background: #f9fafb;
-        padding: 10px 12px;
-        border-radius: 8px;
-        color: #333;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        font-size: 14px;
-        border: 1px solid #eef0f3;
-    }
-
-    .employee-create-page .employee-list a:hover {
-        background: #e0e7ff;
-        color: #1e40af;
-        border-color: #c7d2fe;
-    }
-
-    .employee-create-page .empty-text {
-        color: gray;
-        font-size: 13px;
-        display: block;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .employee-create-page .form-container {
-        flex: 1;
-        background: #ffffff;
-        padding: 30px 35px;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        min-width: 0;
-    }
-
-    .employee-create-page .form-title {
-        text-align: center;
-        margin-bottom: 25px;
-        font-size: 22px;
-        font-weight: 700;
-        color: #333;
-        border-bottom: 2px solid #4f46e5;
-        padding-bottom: 12px;
-    }
-
-    .employee-create-page .form-group {
-        margin-bottom: 18px;
-    }
-
-    .employee-create-page label {
-        display: block;
-        margin-bottom: 6px;
-        font-weight: 600;
-        color: #444;
-        font-size: 14px;
-    }
-
-    .employee-create-page .required::after {
-        content: " *";
-        color: #e11d48;
-    }
-
-    .employee-create-page input,
-    .employee-create-page select,
-    .employee-create-page textarea {
+    .employee-table {
         width: 100%;
-        padding: 11px 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
+        border-collapse: collapse;
+        min-width: 900px;
+    }
+
+    .employee-table th,
+    .employee-table td {
+        padding: 14px 12px;
+        border-bottom: 1px solid #eef2f7;
+        text-align: right;
+        vertical-align: middle;
         font-size: 14px;
-        background-color: #fff;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .employee-create-page input:focus,
-    .employee-create-page select:focus,
-    .employee-create-page textarea:focus {
-        outline: none;
-        border-color: #4f46e5;
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    .employee-table thead th {
+        background: #f8fafc;
+        color: #334155;
+        font-weight: 700;
     }
 
-    .employee-create-page .text-danger {
-        color: #e11d48;
-        font-size: 12px;
-        margin-top: 5px;
-        display: block;
+    .employee-table tbody tr:hover {
+        background: #f8fbff;
     }
 
-    .employee-create-page .actions {
-        display: flex;
-        gap: 15px;
-        margin-top: 25px;
-    }
-
-    .employee-create-page .btn-submit,
-    .employee-create-page .btn-cancel {
-        flex: 1;
-        border-radius: 8px;
-        padding: 11px 20px;
-        font-size: 15px;
-        cursor: pointer;
-        text-align: center;
+    .employee-table a {
+        color: #1f2937;
         text-decoration: none;
-        transition: all 0.2s ease;
     }
 
-    .employee-create-page .btn-submit {
-        background-color: #4f46e5;
-        color: #fff;
-        border: none;
-    }
-
-    .employee-create-page .btn-submit:hover {
-        background-color: #4338ca;
-    }
-
-    .employee-create-page .btn-cancel {
-        background-color: #f3f4f6;
-        color: #374151;
-        border: 1px solid #e5e7eb;
-    }
-
-    .employee-create-page .btn-cancel:hover {
-        background-color: #e5e7eb;
-    }
-
-    .employee-create-page .validation-summary-errors,
-    .employee-create-page .validation-summary-valid {
-        margin-bottom: 15px;
-    }
-
-    .employee-create-page .employee-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .employee-table a:hover {
+        color: #1d4ed8;
     }
 
     .btn-delete-employee {
-        background: none;
         border: none;
-        color: #dc2626; /* قرمز */
+        background: transparent;
+        color: #dc2626;
         font-size: 18px;
         cursor: pointer;
-        transition: color 0.2s ease;
     }
 
-    .btn-delete-employee:hover {
-        color: #b91c1c;
+    .employee-empty {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        color: #6b7280;
+        padding: 24px;
+        text-align: center;
     }
-
-
-
-    
-    @@media (max-width: 1300px) {
-
-    .employee-row {
-        grid-template-columns: 1fr;
-        padding: 15px;
-        gap: 10px;
-    }
-
-    .employee-row.header {
-        display: none;
-    }
-
-    .employee-cell {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 0;
-        border-bottom: 1px solid #eee;
-    }
-
-    .employee-cell::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: #4f46e5;
-        margin-left: 10px;
-    }
-
-    .btn-delete-employee {
-        justify-content: center;
-    }
-
-}
-
 </style>
 
-<div class="employee-create-page">
-    <div class="page-container">
-
-        <div class="sidebar">
-            <h5>👥 لیست کارکنان</h5>
-
-                    <ul class="employee-list">
-                        
-
-                        @if (Model != null && Model.Any())
-                        {
-                            <li>
-                                <div class="employee-row header">
-                                    <div class="employee-cell">شناسه</div>
-                                    <div class="employee-cell">نام و نام خانوادگی</div>
-                                    <div class="employee-cell">کد ملی</div>
-                                    <div class="employee-cell">تلفن</div>
-                                    <div class="employee-cell">نقش</div>
-                                    <div class="employee-cell">نام کاربری</div>
-                                    <div class="employee-cell">بیو</div>
-                                    <div class="employee-cell">حذف</div>
-                                </div>
-                            </li>
-                            @foreach (var emp in Model)
-                            {
-                                <li>
-                                    <div class="employee-row">
-
-                                    <a asp-controller="Employeemenu"
-                                    asp-action="Details"
-                                    asp-route-id="@emp.Employee.Id"
-                                    class="employee-cell employee-link"
-                                    data-label="شناسه">
+<div class="employee-list-page">
+    @if (Model != null && Model.Any())
+    {
+        <div class="employee-table-wrap">
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>کد ملی</th>
+                        <th>تلفن</th>
+                        <th>نقش</th>
+                        <th>نام کاربری</th>
+                        <th>بیو</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var emp in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
                                     @emp.Employee.Id
-                                    </a>
-
-                                    <a asp-controller="Employeemenu"
-                                    asp-action="Details"
-                                    asp-route-id="@emp.Employee.Id"
-                                    class="employee-cell employee-link"
-                                    data-label="نام و نام خانوادگی">
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
                                     @emp.Employee.FirstName @emp.Employee.LastName
-                                    </a>
-
-                                    <a asp-controller="Employeemenu"
-                                    asp-action="Details"
-                                    asp-route-id="@emp.Employee.Id"
-                                    class="employee-cell employee-link"
-                                    data-label="کد ملی">
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
                                     @emp.Employee.National_id
-                                    </a>
-
-                                    <a asp-controller="Employeemenu"
-                                    asp-action="Details"
-                                    asp-route-id="@emp.Employee.Id"
-                                    class="employee-cell employee-link"
-                                    data-label="تلفن">
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
                                     @emp.Employee.Phone
-                                    </a>
-
-                                    <a asp-controller="Employeemenu"
-                                    asp-action="Details"
-                                    asp-route-id="@emp.Employee.Id"
-                                    class="employee-cell employee-link"
-                                    data-label="نقش">
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
                                     @(emp.User != null ? emp.User.RoleId.ToString() : "ندارد")
-                                    </a>
-
-                                    <a asp-controller="Employeemenu"
-                                    asp-action="Details"
-                                    asp-route-id="@emp.Employee.Id"
-                                    class="employee-cell employee-link"
-                                    data-label="نام کاربری">
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
                                     @(emp.User != null ? emp.User.Username : "ندارد")
-                                    </a>
-
-                                    <a asp-controller="Employeemenu"
-                                    asp-action="Details"
-                                    asp-route-id="@emp.Employee.Id"
-                                    class="employee-cell employee-link"
-                                    data-label="بیو">
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Employeemenu" asp-action="Details" asp-route-id="@emp.Employee.Id">
                                     @(emp.User != null ? emp.User.Bio : "ندارد")
-                                    </a>
-
-                                    <button type="button"
-                                            class="btn-delete-employee employee-cell"
-                                            data-id="@emp.Employee.Id"
-                                            data-label="حذف">
-                                        ❌
-                                    </button>
-
-                                    </div>
-
-                                </li>
-                            }
-                        
-                        }
-                        else
-                        {
-                            <li>
-                                <span class="empty-text">هیچ کارمندی ثبت نشده است.</span>
-                            </li>
-                        }
-
-                    </ul>
-
-
-                </div>
-            </div>
-            
+                                </a>
+                            </td>
+                            <td>
+                                <button type="button" class="btn-delete-employee" data-id="@emp.Employee.Id" title="حذف کارمند">
+                                    ❌
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-
-
+    }
+    else
+    {
+        <div class="employee-empty">
+            هیچ کارمندی ثبت نشده است.
+        </div>
+    }
+</div>
 
 <script>
 document.querySelectorAll(".btn-delete-employee").forEach(btn => {
-    btn.addEventListener("click", async (e) => {
+    btn.addEventListener("click", async () => {
         const id = btn.dataset.id;
         if (!confirm("آیا از حذف این کارمند مطمئن هستید؟")) return;
 
         try {
-                const res = await fetch("@Url.Action("DeleteEmployee", "NewAccount")", {
+            const res = await fetch("@Url.Action("DeleteEmployee", "NewAccount")", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(id)
             });
 
             if (res.ok) {
-                btn.closest("li").remove();
+                btn.closest("tr").remove();
                 alert("کارمند با موفقیت حذف شد ✅");
             } else {
                 alert("خطا در حذف کارمند ❌");
