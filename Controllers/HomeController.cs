@@ -2,6 +2,8 @@ using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Mhrm.Models;
+using Mhrm.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Mhrm.Controllers;
@@ -11,15 +13,19 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly HttpClient _httpClient;
+    private readonly HrDbContext _db;
 
-    public HomeController(ILogger<HomeController> logger, HttpClient httpClient)
+    public HomeController(ILogger<HomeController> logger, HttpClient httpClient, HrDbContext db)
     {
         _logger = logger;
         _httpClient = httpClient;
+        _db = db;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var totalEmployees = await _db.Employees.CountAsync();
+        ViewBag.EmployeeCount = totalEmployees;
         return View();
     }
 

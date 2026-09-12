@@ -9,7 +9,7 @@
     <div class="card">
         <div class="card-info">
             <h3>تعداد کل کارکنان</h3>
-            <div class="value">۱۲۸ نفر</div>
+            <div class="value">@((ViewBag.EmployeeCount ?? 0)) نفر</div>
         </div>
         <div class="card-icon">
             <i class="fa-solid fa-users-gear"></i>
@@ -91,7 +91,8 @@
                     }
                     else
                     {
-                        <div style="height:180px;background:#ccc;display:flex;align-items:center;justify-content:center;color:#444;">
+                        <div
+                            style="height:180px;background:#ccc;display:flex;align-items:center;justify-content:center;color:#444;">
                             بدون فایل
                         </div>
                     }
@@ -141,7 +142,8 @@
                         <div class="news-actions">
                             <form asp-action="Delete" method="post" style="display:inline;">
                                 <input type="hidden" name="id" value="@item.Id" />
-                                <button class="delete-bt" type="submit" onclick="return confirm('آیا از حذف این خبر مطمئن هستید؟')">
+                                <button class="delete-bt" type="submit"
+                                        onclick="return confirm('آیا از حذف این خبر مطمئن هستید؟')">
                                     حذف
                                 </button>
                             </form>

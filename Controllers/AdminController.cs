@@ -22,35 +22,40 @@ namespace Mhrm.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.nameSubpage = "اعلان‌ها";
-            
-            var news = await (
-                    from n in _context.News
-                    join u in _context.Users on n.PublishedBy equals u.Id
-                    join e in _context.Employees on u.EmployeeId equals e.Id
-                    orderby n.CreatedAt descending
-                    select new NewsVM
-                    {
-                        Id = n.Id,
-                        FilePath = n.FilePath,
-                        Title = n.Title,
-                        Content = n.Content,
-                        CreatedAt = n.CreatedAt,
-                        IsActive = n.IsActive,
-                        IsImportant = n.IsImportant,
-                        Category = n.Category,
 
-                        EmployeeFirstName = e.FirstName,
-                        EmployeeLastName = e.LastName,
-                        EmployeeId = e.Id
-                    }
-                ).ToListAsync();
+            var news = await (
+                from n in _context.News
+                join u in _context.Users on n.PublishedBy equals u.Id
+                join e in _context.Employees on u.EmployeeId equals e.Id
+                orderby n.CreatedAt descending
+                select new NewsVM
+                {
+                    Id = n.Id,
+                    FilePath = n.FilePath,
+                    Title = n.Title,
+                    Content = n.Content,
+                    CreatedAt = n.CreatedAt,
+                    IsActive = n.IsActive,
+                    IsImportant = n.IsImportant,
+                    Category = n.Category,
+
+                    EmployeeFirstName = e.FirstName,
+                    EmployeeLastName = e.LastName,
+                    EmployeeId = e.Id
+                }
+            ).ToListAsync();
+
+            // total employees for dashboard
+            var totalEmployees = await _context.Employees.CountAsync();
+            ViewBag.EmployeeCount = totalEmployees;
+
             return View(news);
         }
 
         [HttpPost]
         public async Task<IActionResult> ToggleActive(int id)
         {
-            
+
             var news = await _context.News.FirstOrDefaultAsync(n => n.Id == id);
 
             if (news == null)
@@ -69,7 +74,7 @@ namespace Mhrm.Controllers
         public IActionResult Createnew()
         {
             ViewBag.nameSubpage = "افزودن اعلان جدید";
-            return View(new News()); 
+            return View(new News());
         }
 
         // ذخیره خبر جدید (POST)
@@ -104,7 +109,7 @@ namespace Mhrm.Controllers
         private async Task<string> SaveImageAsync(IFormFile imageFile)
         {
             string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "news");
-            
+
             if (!Directory.Exists(uploadsFolder))
                 Directory.CreateDirectory(uploadsFolder);
 
