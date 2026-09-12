@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "l2lRQdKkY2SoT21l+0jMNMlyqtDkYW1ZhTMynQrzE94=",
+  "Hash": "zSRoD3IMmwUzgzdiLKeXLYRQCLT11D8Qc4KK/LYeN9o=",
   "Source": "Mhrm",
   "BasePath": "_content/Mhrm",
   "Mode": "Default",
@@ -8,19 +8,19 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "Mhrm\\wwwroot",
+      "Name": "Mhrm/wwwroot",
       "Source": "Mhrm",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Mhrm.styles.css",
+      "Identity": "/home/korosh/HRM/obj/Debug/net8.0/scopedcss/bundle/Mhrm.styles.css",
       "SourceId": "Mhrm",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "/home/korosh/HRM/obj/Debug/net8.0/scopedcss/bundle/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "Mhrm.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Mhrm.styles.css"
+      "OriginalItemSpec": "/home/korosh/HRM/obj/Debug/net8.0/scopedcss/bundle/Mhrm.styles.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Mhrm.bundle.scp.css",
+      "Identity": "/home/korosh/HRM/obj/Debug/net8.0/scopedcss/projectbundle/Mhrm.bundle.scp.css",
       "SourceId": "Mhrm",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "/home/korosh/HRM/obj/Debug/net8.0/scopedcss/projectbundle/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "Mhrm.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Mhrm.bundle.scp.css"
+      "OriginalItemSpec": "/home/korosh/HRM/obj/Debug/net8.0/scopedcss/projectbundle/Mhrm.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\css\\login.css",
+      "Identity": "/home/korosh/HRM/wwwroot/css/login.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "css/login.css",
       "AssetKind": "All",
@@ -71,13 +71,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\login.css"
+      "OriginalItemSpec": "wwwroot/css/login.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\css\\management-header.css",
+      "Identity": "/home/korosh/HRM/wwwroot/css/management-header.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "css/management-header.css",
       "AssetKind": "All",
@@ -90,13 +90,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\management-header.css"
+      "OriginalItemSpec": "wwwroot/css/management-header.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\css\\site.css",
+      "Identity": "/home/korosh/HRM/wwwroot/css/site.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -109,13 +109,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\favicon.ico",
+      "Identity": "/home/korosh/HRM/wwwroot/favicon.ico",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -128,13 +128,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
+      "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\images\\login.jpg",
+      "Identity": "/home/korosh/HRM/wwwroot/images/login.jpg",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "images/login.jpg",
       "AssetKind": "All",
@@ -147,13 +147,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\login.jpg"
+      "OriginalItemSpec": "wwwroot/images/login.jpg"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\images\\LOGO.jpg",
+      "Identity": "/home/korosh/HRM/wwwroot/images/LOGO.jpg",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "images/LOGO.jpg",
       "AssetKind": "All",
@@ -166,13 +166,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\LOGO.jpg"
+      "OriginalItemSpec": "wwwroot/images/LOGO.jpg"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\images\\Logo.png",
+      "Identity": "/home/korosh/HRM/wwwroot/images/Logo.png",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "images/Logo.png",
       "AssetKind": "All",
@@ -185,13 +185,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\Logo.png"
+      "OriginalItemSpec": "wwwroot/images/Logo.png"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\images\\Userdefult.png",
+      "Identity": "/home/korosh/HRM/wwwroot/images/Userdefult.png",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "images/Userdefult.png",
       "AssetKind": "All",
@@ -204,13 +204,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\Userdefult.png"
+      "OriginalItemSpec": "wwwroot/images/Userdefult.png"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\js\\site.js",
+      "Identity": "/home/korosh/HRM/wwwroot/js/site.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -223,13 +223,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\site.js"
+      "OriginalItemSpec": "wwwroot/js/site.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -242,13 +242,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -261,13 +261,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -280,13 +280,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -299,13 +299,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -318,13 +318,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -337,13 +337,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -356,13 +356,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -375,13 +375,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -394,13 +394,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -413,13 +413,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -432,13 +432,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -451,13 +451,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -470,13 +470,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -489,13 +489,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -508,13 +508,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -527,13 +527,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -546,13 +546,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -565,13 +565,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -584,13 +584,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -603,13 +603,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -622,13 +622,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -641,13 +641,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -660,13 +660,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -679,13 +679,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -698,13 +698,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -717,13 +717,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -736,13 +736,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -755,13 +755,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -774,13 +774,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -793,13 +793,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -812,13 +812,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -831,13 +831,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -850,13 +850,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -869,13 +869,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -888,13 +888,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -907,13 +907,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -926,13 +926,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -945,13 +945,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -964,13 +964,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -983,13 +983,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -1002,13 +1002,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -1021,13 +1021,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1040,13 +1040,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -1059,13 +1059,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/bootstrap/LICENSE",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -1078,13 +1078,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
+      "OriginalItemSpec": "wwwroot/lib/bootstrap/LICENSE"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -1097,13 +1097,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -1116,13 +1116,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -1135,13 +1135,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation/dist/additional-methods.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -1154,13 +1154,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -1173,13 +1173,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -1192,13 +1192,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -1211,13 +1211,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery-validation/LICENSE.md",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -1230,13 +1230,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation/LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery/dist/jquery.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -1249,13 +1249,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery/dist/jquery.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery/dist/jquery.min.js",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -1268,13 +1268,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
+      "OriginalItemSpec": "wwwroot/lib/jquery/dist/jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery/dist/jquery.min.map",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -1287,13 +1287,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
+      "OriginalItemSpec": "wwwroot/lib/jquery/dist/jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "/home/korosh/HRM/wwwroot/lib/jquery/LICENSE.txt",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -1306,13 +1306,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+      "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\uploads\\fc6f42e1-2cee-4094-9ea6-0291105366fe.webp",
+      "Identity": "/home/korosh/HRM/wwwroot/uploads/fc6f42e1-2cee-4094-9ea6-0291105366fe.webp",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "uploads/fc6f42e1-2cee-4094-9ea6-0291105366fe.webp",
       "AssetKind": "All",
@@ -1325,13 +1325,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\fc6f42e1-2cee-4094-9ea6-0291105366fe.webp"
+      "OriginalItemSpec": "wwwroot/uploads/fc6f42e1-2cee-4094-9ea6-0291105366fe.webp"
     },
     {
-      "Identity": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\uploads\\news\\756d54e0-8679-4f89-8953-81c5c7828ba9_DET_Burj Khalifa_Aerial_4_Dubai_Tourism-compressed (1).jpg",
+      "Identity": "/home/korosh/HRM/wwwroot/uploads/news/756d54e0-8679-4f89-8953-81c5c7828ba9_DET_Burj Khalifa_Aerial_4_Dubai_Tourism-compressed (1).jpg",
       "SourceId": "Mhrm",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\wwwroot\\",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
       "BasePath": "_content/Mhrm",
       "RelativePath": "uploads/news/756d54e0-8679-4f89-8953-81c5c7828ba9_DET_Burj Khalifa_Aerial_4_Dubai_Tourism-compressed (1).jpg",
       "AssetKind": "All",
@@ -1344,7 +1344,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\news\\756d54e0-8679-4f89-8953-81c5c7828ba9_DET_Burj Khalifa_Aerial_4_Dubai_Tourism-compressed (1).jpg"
+      "OriginalItemSpec": "wwwroot/uploads/news/756d54e0-8679-4f89-8953-81c5c7828ba9_DET_Burj Khalifa_Aerial_4_Dubai_Tourism-compressed (1).jpg"
+    },
+    {
+      "Identity": "/home/korosh/HRM/wwwroot/uploads/news/e033ee0f-298b-43ac-9ec9-80aa1f3e481e_IMG_20260226_171749.jpg",
+      "SourceId": "Mhrm",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/korosh/HRM/wwwroot/",
+      "BasePath": "_content/Mhrm",
+      "RelativePath": "uploads/news/e033ee0f-298b-43ac-9ec9-80aa1f3e481e_IMG_20260226_171749.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/news/e033ee0f-298b-43ac-9ec9-80aa1f3e481e_IMG_20260226_171749.jpg"
     }
   ]
 }

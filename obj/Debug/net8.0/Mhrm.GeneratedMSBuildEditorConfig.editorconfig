@@ -9,95 +9,95 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Mhrm
 build_property.RootNamespace = Mhrm
-build_property.ProjectDir = c:\Users\H3SHE\OneDrive\Desktop\Mhrm21\Project\
+build_property.ProjectDir = /home/korosh/HRM/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\H3SHE\OneDrive\Desktop\Mhrm21\Project
+build_property.MSBuildProjectDirectory = /home/korosh/HRM
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Accounting/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudGluZ1xJbmRleC5jc2h0bWw=
+[/home/korosh/HRM/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+[/home/korosh/HRM/Views/Accounting/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudGluZy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Admin/Createnew.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlbmV3LmNzaHRtbA==
+[/home/korosh/HRM/Views/Admin/Createnew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ3JlYXRlbmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+[/home/korosh/HRM/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Employeemenu/DetailsEmployee.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVtZW51XERldGFpbHNFbXBsb3llZS5jc2h0bWw=
+[/home/korosh/HRM/Views/Employeemenu/DetailsEmployee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVtZW51L0RldGFpbHNFbXBsb3llZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Employeemenu/List.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVtZW51XExpc3QuY3NodG1s
+[/home/korosh/HRM/Views/Employeemenu/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVtZW51L0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Employeemenu/Requests.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVtZW51XFJlcXVlc3RzLmNzaHRtbA==
+[/home/korosh/HRM/Views/Employeemenu/Requests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVtZW51L1JlcXVlc3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/home/korosh/HRM/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/home/korosh/HRM/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/NewAccount/RegisterNew.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3QWNjb3VudFxSZWdpc3Rlck5ldy5jc2h0bWw=
+[/home/korosh/HRM/Views/NewAccount/RegisterNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmV3QWNjb3VudC9SZWdpc3Rlck5ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/home/korosh/HRM/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Shared/_ManagementLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYW5hZ2VtZW50TGF5b3V0LmNzaHRtbA==
+[/home/korosh/HRM/Views/Shared/_ManagementLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19NYW5hZ2VtZW50TGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/home/korosh/HRM/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Shared/_WorkerLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Xb3JrZXJMYXlvdXQuY3NodG1s
+[/home/korosh/HRM/Views/Shared/_WorkerLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Xb3JrZXJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Survey/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VydmV5XEluZGV4LmNzaHRtbA==
+[/home/korosh/HRM/Views/Survey/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VydmV5L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Worker/details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2VyXGRldGFpbHMuY3NodG1s
+[/home/korosh/HRM/Views/Worker/details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV29ya2VyL2RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Worker/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2VyXEluZGV4LmNzaHRtbA==
+[/home/korosh/HRM/Views/Worker/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV29ya2VyL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Worker/request.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2VyXHJlcXVlc3QuY3NodG1s
+[/home/korosh/HRM/Views/Worker/request.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV29ya2VyL3JlcXVlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/home/korosh/HRM/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/home/korosh/HRM/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/H3SHE/OneDrive/Desktop/Mhrm21/Project/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-zn9n5hscn2
+[/home/korosh/HRM/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-r6p1ru4y5f

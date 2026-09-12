@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\Mhrm.csproj": {}
+    "/home/korosh/HRM/Mhrm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\Mhrm.csproj": {
+    "/home/korosh/HRM/Mhrm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\Mhrm.csproj",
+        "projectUniqueName": "/home/korosh/HRM/Mhrm.csproj",
         "projectName": "Mhrm",
-        "projectPath": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\Mhrm.csproj",
-        "packagesPath": "C:\\Users\\H3SHE\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\H3SHE\\OneDrive\\Desktop\\Mhrm21\\Project\\obj\\",
+        "projectPath": "/home/korosh/HRM/Mhrm.csproj",
+        "packagesPath": "/home/korosh/.nuget/packages/",
+        "outputPath": "/home/korosh/HRM/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\H3SHE\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/korosh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Users\\H3SHE\\.dotnet\\NuGetFallbackFolder": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -33,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -48,7 +42,7 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.7, )"
             },
@@ -56,7 +50,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.7, )"
+              "version": "[8.0.7, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -82,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.424/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.130/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

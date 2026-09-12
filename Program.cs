@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// DB CONTEXT 
+// DB CONTEXT
 builder.Services.AddDbContext<HrDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 builder.Services.AddControllersWithViews();
 
@@ -26,6 +26,12 @@ builder.Services.AddAuthentication("CookieAuth")
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<HrDbContext>();
+    db.Database.EnsureCreated();
+}
 
 //  ERROR HANDLING 
 if (!app.Environment.IsDevelopment())
