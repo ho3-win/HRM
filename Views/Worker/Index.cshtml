@@ -280,6 +280,183 @@
             align-items: flex-start;
         }
     }
+
+    .ai-widget-container {
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-family: Tahoma, 'Vazirmatn', sans-serif;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.2s ease;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .ai-widget-container.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(0);
+    }
+
+    .ai-widget-container.is-lifted {
+        transform: translateY(-8px);
+    }
+
+    .ai-float-btn {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background-color: #6c5ce7;
+        color: #fff;
+        border: none;
+        box-shadow: 0 8px 24px rgba(108, 92, 231, 0.4);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        transition: all 0.25s ease;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .ai-float-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 12px 28px rgba(108, 92, 231, 0.5);
+    }
+
+    .ai-btn-label {
+        margin-top: 6px;
+        font-size: 0.72rem;
+        font-weight: bold;
+        color: #2b2b2b;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 3px 8px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        backdrop-filter: blur(4px);
+        pointer-events: none;
+    }
+
+    .ai-chat-window {
+        position: fixed;
+        bottom: 76px;
+        left: 16px;
+        width: 360px;
+        height: 480px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 2;
+        border: 1px solid #eee;
+        direction: rtl;
+        font-family: Tahoma, 'Vazirmatn', sans-serif;
+    }
+
+    .ai-chat-header {
+        background: #6c5ce7;
+        color: #fff;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .ai-chat-header .title {
+        font-weight: bold;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .ai-chat-close {
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .ai-chat-body {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #f8f9fa;
+    }
+
+    .chat-message {
+        max-width: 80%;
+        padding: 10px 14px;
+        border-radius: 14px;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        word-break: break-word;
+    }
+
+    .chat-message.bot {
+        background: #fff;
+        color: #333;
+        align-self: flex-start;
+        border-bottom-right-radius: 2px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .chat-message.user {
+        background: #6c5ce7;
+        color: #fff;
+        align-self: flex-end;
+        border-bottom-left-radius: 2px;
+    }
+
+    .ai-chat-footer {
+        padding: 12px;
+        background: #fff;
+        display: flex;
+        gap: 8px;
+        border-top: 1px solid #eee;
+    }
+
+    .ai-chat-input {
+        flex: 1;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 8px 14px;
+        font-family: inherit;
+        outline: none;
+    }
+
+    .ai-chat-send {
+        background: #6c5ce7;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @@media (max-width: 576px) {
+        .ai-chat-window {
+            width: calc(100% - 40px);
+            left: 20px;
+        }
+    }
 </style>
 
 <div class="worker-dashboard">
@@ -359,4 +536,173 @@
             </a>
         </div>
     </div>
+
+    <div class="ai-widget-container" id="aiWidgetContainer">
+        <button class="ai-float-btn" id="aiToggleBtn" type="button" aria-label="دستیار هوش مصنوعی">
+            <i class="fa-solid fa-robot"></i>
+        </button>
+        <span class="ai-btn-label">دستیار</span>
+    </div>
+
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="ai-chat-header">
+            <div class="title"><i class="fa-solid fa-robot"></i> دستیار هوشمند</div>
+            <button class="ai-chat-close" id="aiCloseBtn" type="button" aria-label="بستن چت">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="chat-message bot">سلام! چطور می‌توانم کمکتان کنم؟</div>
+        </div>
+        <div class="ai-chat-footer">
+            <input type="text" class="ai-chat-input" id="aiInput" placeholder="سوال خود را بنویسید..." />
+            <button class="ai-chat-send" id="aiSendBtn" type="button" aria-label="ارسال پیام">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
 </div>
+
+<script>
+    const aiToggleBtn = document.getElementById('aiToggleBtn');
+    const aiCloseBtn = document.getElementById('aiCloseBtn');
+    const aiChatWindow = document.getElementById('aiChatWindow');
+    const aiSendBtn = document.getElementById('aiSendBtn');
+    const aiInput = document.getElementById('aiInput');
+    const aiChatBody = document.getElementById('aiChatBody');
+    const aiWidgetContainer = document.getElementById('aiWidgetContainer');
+    let assistantLockedToBottom = false;
+
+    function lockAssistantAtBottom() {
+        if (aiChatWindow.style.display === 'flex') {
+            return;
+        }
+
+        assistantLockedToBottom = true;
+        aiWidgetContainer.classList.remove('is-lifted');
+        aiWidgetContainer.classList.remove('is-hidden');
+        aiWidgetContainer.style.bottom = '16px';
+        aiWidgetContainer.style.left = '16px';
+        aiWidgetContainer.style.transform = 'translateY(0)';
+    }
+
+    function closeAssistantChat() {
+        aiChatWindow.style.display = 'none';
+        aiWidgetContainer.classList.remove('is-hidden');
+        lockAssistantAtBottom();
+    }
+
+    function openAssistantChat() {
+        aiChatWindow.style.display = 'flex';
+        aiWidgetContainer.classList.add('is-hidden');
+        aiWidgetContainer.classList.remove('is-lifted');
+        aiWidgetContainer.style.transform = 'translateY(0)';
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!assistantLockedToBottom || aiChatWindow.style.display !== 'flex') {
+            lockAssistantAtBottom();
+        }
+    }, { passive: true });
+
+    aiToggleBtn.addEventListener('click', () => {
+        if (aiChatWindow.style.display === 'flex') {
+            closeAssistantChat();
+        } else {
+            openAssistantChat();
+        }
+    });
+
+    aiCloseBtn.addEventListener('click', () => {
+        closeAssistantChat();
+    });
+
+    function appendMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('chat-message', sender);
+        msgDiv.textContent = text;
+        aiChatBody.appendChild(msgDiv);
+        aiChatBody.scrollTop = aiChatBody.scrollHeight;
+        return msgDiv;
+    }
+
+    function getFallbackReply(question) {
+        const value = question.toLowerCase();
+
+        if (value.includes('سلام') || value.includes('درود') || value.includes('hello')) {
+            return 'سلام! خوش‌آمدید. در خدمت شما هستم.';
+        }
+
+        if (value.includes('مرخصی') || value.includes('leave')) {
+            return 'برای بررسی درخواست مرخصی، به بخش مرخصی‌ها در پنل کاربری مراجعه کنید.';
+        }
+
+        if (value.includes('قرارداد') || value.includes('contract')) {
+            return 'در بخش قراردادها می‌توانید جزئیات قرارداد خود را مشاهده کنید.';
+        }
+
+        if (value.includes('مدارک') || value.includes('document')) {
+            return 'مدارک شما در بخش مدارک موجود است و می‌توانید آن‌ها را بررسی کنید.';
+        }
+
+        return 'ببخشید، در حال حاضر سرویس هوش مصنوعی در دسترس نیست. لطفاً بعداً دوباره تلاش کنید یا از بخش‌های موجود پنل استفاده کنید.';
+    }
+
+    function extractAiAnswer(payload, rawText) {
+        if (!payload && !rawText) return '';
+
+        if (payload && typeof payload === 'object') {
+            return payload.answer || payload.response || payload.message || payload.text || payload.reply || '';
+        }
+
+        if (typeof payload === 'string') {
+            return payload.trim();
+        }
+
+        if (typeof rawText === 'string') {
+            const trimmed = rawText.trim();
+            if (!trimmed) return '';
+
+            try {
+                const parsed = JSON.parse(trimmed);
+                return parsed?.answer || parsed?.response || parsed?.message || parsed?.text || parsed?.reply || trimmed;
+            } catch {
+                return trimmed;
+            }
+        }
+
+        return '';
+    }
+
+    async function sendMessage() {
+        const text = aiInput.value.trim();
+        if (!text) return;
+
+        appendMessage(text, 'user');
+        aiInput.value = '';
+
+        const loadingMsg = appendMessage('در حال پاسخ‌دهی...', 'bot');
+        const fallbackReply = getFallbackReply(text);
+
+        try {
+            const response = await fetch('@Url.Action("AskAi", "Home")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                body: new URLSearchParams({ question: text })
+            });
+
+            const result = await response.json();
+            const answer = result?.answer || fallbackReply;
+            loadingMsg.textContent = answer;
+        } catch (error) {
+            loadingMsg.textContent = fallbackReply;
+        }
+    }
+
+    aiSendBtn.addEventListener('click', sendMessage);
+    aiInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+</script>
