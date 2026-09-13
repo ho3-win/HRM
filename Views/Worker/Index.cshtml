@@ -470,9 +470,9 @@
             <div class="profile-info">
                 <h2 class="user-name">@User.Identity?.Name</h2>
                 <div class="info-grid">
-                    <div class="info-item"><i class="fa-solid fa-id-card"></i> کد پرسنلی: <span>۱۲۳۴۵۶</span></div>
-                    <div class="info-item"><i class="fa-solid fa-cake-candles"></i> سن: <span>۲۸ سال</span></div>
-                    <div class="info-item"><i class="fa-solid fa-user-check"></i> وضعیت: <span>کارمند فعال</span></div>
+                    <div class="info-item"><i class="fa-solid fa-id-card"></i> کد پرسنلی: <span>@(ViewBag.EmployeePersonnelCode ?? "نامشخص")</span></div>
+                    <div class="info-item"><i class="fa-solid fa-cake-candles"></i> سن: <span>@(ViewBag.EmployeeAgeText ?? "نامشخص")</span></div>
+                    <div class="info-item"><i class="fa-solid fa-user-check"></i> وضعیت: <span>@(ViewBag.EmployeeStatusText ?? "کارمند فعال")</span></div>
                 </div>
             </div>
 

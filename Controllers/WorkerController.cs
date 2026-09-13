@@ -21,9 +21,57 @@ namespace Mhrm.Controllers
             _env = env;
         }
 
+        private static string GetAgeText(DateTime? birthDate)
+        {
+            if (birthDate == null)
+            {
+                return "نامشخص";
+            }
+
+            var today = DateTime.Today;
+            var age = today.Year - birthDate.Value.Year;
+
+            if (birthDate.Value.Date > today.AddYears(-age))
+            {
+                age--;
+            }
+
+            return age >= 0 ? $"{age} سال" : "نامشخص";
+        }
+
         public async Task<IActionResult> Index()
         {
             ViewBag.nameSubpage = "اعلان‌ها";
+
+            var userIdClaim = User.FindFirst("UserId")?.Value;
+            var employeePersonnelCode = "نامشخص";
+            var employeeAgeText = "نامشخص";
+            var employeeStatusText = "کارمند فعال";
+
+            if (!string.IsNullOrWhiteSpace(userIdClaim) && int.TryParse(userIdClaim, out var userId))
+            {
+                var currentUser = await _context.Users
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(u => u.Id == userId);
+
+                if (currentUser != null)
+                {
+                    var currentEmployee = await _context.Employees
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(e => e.Id == currentUser.EmployeeId);
+
+                    if (currentEmployee != null)
+                    {
+                        employeePersonnelCode = $"EMP-{currentEmployee.Id}";
+                        employeeAgeText = GetAgeText(currentEmployee.BirthDate);
+                        employeeStatusText = currentEmployee.Status == 1 ? "کارمند فعال" : "وضعیت نامشخص";
+                    }
+                }
+            }
+
+            ViewBag.EmployeePersonnelCode = employeePersonnelCode;
+            ViewBag.EmployeeAgeText = employeeAgeText;
+            ViewBag.EmployeeStatusText = employeeStatusText;
 
             var news = await (
                      from n in _context.News
