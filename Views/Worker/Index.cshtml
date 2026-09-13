@@ -487,16 +487,13 @@
             </div>
         </div>
 
-        @if (latestNews != null)
-        {
-            <a href="@Url.Action("Index", "Worker")" class="news-card">
-                <div class="news-content">
-                    <div class="news-badge"><i class="fa-solid fa-bullhorn"></i> اخبار مهم</div>
-                    <div class="news-text">@latestNews.Title</div>
-                </div>
-                <div class="news-action"><span>مشاهده همه اخبار</span><i class="fa-solid fa-arrow-left"></i></div>
-            </a>
-        }
+        <a href="@Url.Action("NewsList", "Worker")" class="news-card">
+            <div class="news-content">
+                <div class="news-badge"><i class="fa-solid fa-bullhorn"></i> اخبار مهم</div>
+                <div class="news-text">@(latestNews != null ? latestNews.Title : "در حال حاضر خبری برای نمایش وجود ندارد.")</div>
+            </div>
+            <div class="news-action"><span>مشاهده همه اخبار</span><i class="fa-solid fa-arrow-left"></i></div>
+        </a>
 
         <div class="action-grid">
             <a asp-controller="Worker" asp-action="Details" fragment="contracts" class="action-card">

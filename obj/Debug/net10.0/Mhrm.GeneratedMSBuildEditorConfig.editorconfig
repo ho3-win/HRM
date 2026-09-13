@@ -102,6 +102,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV29ya2VyL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/korosh/HRM/Views/Worker/NewsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV29ya2VyL05ld3NMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/korosh/HRM/Views/Worker/request.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV29ya2VyL3JlcXVlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

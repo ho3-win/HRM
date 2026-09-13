@@ -24,29 +24,57 @@ namespace Mhrm.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.nameSubpage = "اعلان‌ها";
-            
-           var news = await (
-                    from n in _context.News
-                    join u in _context.Users on n.PublishedBy equals u.Id
-                    join e in _context.Employees on u.EmployeeId equals e.Id
-                    where n.IsActive == true   
-                    orderby n.CreatedAt descending
-                    select new NewsVM
-                    {
-                        Id = n.Id,
-                        FilePath = n.FilePath,
-                        Title = n.Title,
-                        Content = n.Content,
-                        CreatedAt = n.CreatedAt,
-                        IsActive = n.IsActive,
-                        IsImportant = n.IsImportant, 
-                        Category = n.Category,
-                        
-                        EmployeeFirstName = e.FirstName,
-                        EmployeeLastName = e.LastName,
-                        EmployeeId = e.Id
-                    }
-                ).ToListAsync();
+
+            var news = await (
+                     from n in _context.News
+                     join u in _context.Users on n.PublishedBy equals u.Id
+                     join e in _context.Employees on u.EmployeeId equals e.Id
+                     where n.IsActive == true
+                     orderby n.CreatedAt descending
+                     select new NewsVM
+                     {
+                         Id = n.Id,
+                         FilePath = n.FilePath,
+                         Title = n.Title,
+                         Content = n.Content,
+                         CreatedAt = n.CreatedAt,
+                         IsActive = n.IsActive,
+                         IsImportant = n.IsImportant,
+                         Category = n.Category,
+
+                         EmployeeFirstName = e.FirstName,
+                         EmployeeLastName = e.LastName,
+                         EmployeeId = e.Id
+                     }
+                 ).ToListAsync();
+            return View(news);
+        }
+
+        public async Task<IActionResult> NewsList()
+        {
+            var news = await (
+                from n in _context.News
+                join u in _context.Users on n.PublishedBy equals u.Id
+                join e in _context.Employees on u.EmployeeId equals e.Id
+                where n.IsActive == true
+                orderby n.CreatedAt descending
+                select new NewsVM
+                {
+                    Id = n.Id,
+                    FilePath = n.FilePath,
+                    Title = n.Title,
+                    Content = n.Content,
+                    CreatedAt = n.CreatedAt,
+                    IsActive = n.IsActive,
+                    IsImportant = n.IsImportant,
+                    Category = n.Category,
+                    EmployeeFirstName = e.FirstName,
+                    EmployeeLastName = e.LastName,
+                    EmployeeId = e.Id
+                }
+            ).ToListAsync();
+
+            ViewBag.nameSubpage = "اخبار و اطلاعیه‌ها";
             return View(news);
         }
 
@@ -110,7 +138,7 @@ namespace Mhrm.Controllers
             return View("Details", vm);
         }
 
-       
+
         public class UpdateUserDto
         {
             public int EmployeeId { get; set; }
@@ -140,9 +168,9 @@ namespace Mhrm.Controllers
             return Ok();
         }
 
-       
 
-        
+
+
 
         [HttpPost]
         public async Task<IActionResult> CreateDocument(
@@ -186,10 +214,10 @@ namespace Mhrm.Controllers
             return Ok();
         }
 
-        
 
-        
-        
+
+
+
 
         [HttpPost]
         public IActionResult CreateRequest([FromBody] Request model)
@@ -242,9 +270,9 @@ namespace Mhrm.Controllers
             return Ok();
         }
 
-        
 
-        
+
+
 
         public IActionResult request()
         {
