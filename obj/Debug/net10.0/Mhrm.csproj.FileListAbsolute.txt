@@ -216,3 +216,9 @@
 /home/korosh/HRM/obj/Debug/net10.0/Mhrm.genruntimeconfig.cache
 /home/korosh/HRM/obj/Debug/net10.0/ref/Mhrm.dll
 /home/korosh/HRM/obj/Debug/net10.0/compressed/x9ga5eyl1n-{0}-5yugi5jyj2-5yugi5jyj2.gz
+/home/korosh/HRM/bin/Debug/net10.0/publish/web.config
+/home/korosh/HRM/bin/Debug/net10.0/publish/appsettings.Development.json
+/home/korosh/HRM/bin/Debug/net10.0/publish/appsettings.json
+/home/korosh/HRM/bin/Debug/net10.0/publish/Mhrm.deps.json
+/home/korosh/HRM/bin/Debug/net10.0/publish/Mhrm.runtimeconfig.json
+/home/korosh/HRM/bin/Debug/net10.0/publish/Mhrm.staticwebassets.endpoints.json

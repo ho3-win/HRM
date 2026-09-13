@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_WorkerLayout.cshtml";
     ViewData["Title"] = "پنل کاربر";
     var latestNews = Model.FirstOrDefault();
+    var userDisplayName = User.Identity?.Name ?? "کاربر";
+    var userPhoto = User.FindFirst("Photo")?.Value ?? Url.Content("~/images/Userdefult.png");
 }
 
 <style>
@@ -12,7 +14,11 @@
         --card-bg: #ffffff;
         --text-main: #2b2b2b;
         --text-muted: #6c757d;
-        --border-radius: 20px;
+        --border-radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
     }
 
     .worker-dashboard {
@@ -23,61 +29,153 @@
         direction: rtl;
     }
 
-    .worker-dashboard * {
-        box-sizing: border-box;
+    .worker-dashboard {
+        --info-bar-height: clamp(76px, 7vw, 96px);
     }
 
-    .worker-dashboard .profile-logout {
-        margin-right: auto;
+    .worker-dashboard .app-header {
+        background-color: var(--primary-yellow);
+        width: min(1200px, calc(100% - 24px));
+        min-height: var(--info-bar-height);
+        height: auto;
+        margin: 0 auto;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-radius: 0 0 18px 18px;
+    }
+
+    .worker-dashboard .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--dark-text);
+    }
+
+    .worker-dashboard .header-brand .logo-img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .worker-dashboard .header-brand .title {
+        font-weight: 900;
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+    }
+
+    .worker-dashboard .header-user-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .worker-dashboard .user-pill {
+        background: rgba(255, 255, 255, 0.35);
+        padding: 5px 12px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        backdrop-filter: blur(4px);
+    }
+
+    .worker-dashboard .user-pill-info {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+
+    .worker-dashboard .user-pill-info .name {
+        font-weight: bold;
+        font-size: 0.95rem;
+        color: var(--dark-text);
+        line-height: 1.2;
+    }
+
+    .worker-dashboard .user-pill-info .role {
+        font-size: 0.75rem;
+        color: #4a4a4a;
+    }
+
+    .worker-dashboard .user-pill-avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
+        color: var(--dark-text);
+        font-size: 1.1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .worker-dashboard .logout-form {
+        margin: 0;
     }
 
     .worker-dashboard .logout-btn {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 8px;
-        background: var(--primary-yellow);
-        border: none;
+        gap: 6px;
         color: var(--dark-text);
         text-decoration: none;
         font-weight: bold;
-        font-size: 1.05rem;
-        padding: 10px 16px;
-        border-radius: 12px;
+        font-size: 0.95rem;
+        padding: 7px 12px;
+        border-radius: 10px;
+        transition: background 0.2s ease;
+        border: none;
+        background: transparent;
         cursor: pointer;
-        transition: filter 0.2s ease;
     }
 
     .worker-dashboard .logout-btn:hover {
-        filter: brightness(0.96);
+        background: rgba(0, 0, 0, 0.08);
     }
 
     .worker-dashboard .dashboard-container {
         max-width: 1200px;
-        margin: 40px auto;
-        padding: 0 30px 60px;
+        margin: 25px auto;
+        padding: 0 20px 40px;
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        gap: 20px;
     }
 
     .worker-dashboard .profile-card {
-        background: linear-gradient(135deg, #fff8d6 0%, #ffffff 100%);
+        background: var(--card-bg);
         border-radius: var(--border-radius);
-        padding: 30px 35px;
+        min-height: var(--info-bar-height);
+        height: auto;
+        padding: 12px 20px;
         display: flex;
         align-items: center;
-        gap: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        border-right: 8px solid #d9b209;
+        justify-content: space-between;
+        gap: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        border-right: 5px solid var(--primary-yellow);
+    }
+
+    .worker-dashboard .profile-main-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-shrink: 0;
     }
 
     .worker-dashboard .avatar-wrapper {
         position: relative;
-        width: 110px;
-        height: 110px;
+        width: 52px;
+        height: 52px;
         flex-shrink: 0;
     }
 
@@ -86,45 +184,39 @@
         height: 100%;
         border-radius: 50%;
         object-fit: cover;
-        border: 4px solid var(--primary-yellow);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .worker-dashboard .profile-info {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
+        border: 2px solid var(--primary-yellow);
     }
 
     .worker-dashboard .user-name {
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 1.15rem;
         color: var(--text-main);
         font-weight: bold;
+        white-space: nowrap;
     }
 
     .worker-dashboard .info-grid {
         display: flex;
+        align-items: center;
+        gap: 10px;
         flex-wrap: wrap;
-        gap: 25px;
-        margin-top: 5px;
     }
 
     .worker-dashboard .info-item {
-        font-size: 1.05rem;
+        font-size: 0.85rem;
         color: var(--text-muted);
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         background: #f8f9fa;
-        padding: 8px 16px;
-        border-radius: 10px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        white-space: nowrap;
     }
 
     .worker-dashboard .info-item i {
         color: var(--primary-yellow);
-        font-size: 1.2rem;
+        font-size: 0.95rem;
     }
 
     .worker-dashboard .info-item span {
@@ -135,114 +227,114 @@
     .worker-dashboard .news-card {
         background: var(--card-bg);
         border-radius: var(--border-radius);
-        padding: 25px 35px;
+        padding: 16px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         text-decoration: none;
         color: var(--text-main);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         border: 2px solid transparent;
         transition: all 0.3s ease;
         cursor: pointer;
+        gap: 15px;
     }
 
     .worker-dashboard .news-content {
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 15px;
         flex: 1;
     }
 
     .worker-dashboard .news-badge {
         background: rgba(241, 184, 13, 0.2);
         color: #8c6a00;
-        padding: 8px 18px;
+        padding: 6px 14px;
         border-radius: 20px;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         font-weight: bold;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         white-space: nowrap;
+        flex-shrink: 0;
     }
 
     .worker-dashboard .news-text {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
         color: var(--text-main);
         font-weight: 600;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 700px;
+        line-height: 1.5;
     }
 
     .worker-dashboard .news-action {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 1rem;
+        gap: 8px;
+        font-size: 0.85rem;
         color: var(--text-muted);
         font-weight: bold;
         white-space: nowrap;
+        flex-shrink: 0;
     }
 
     .worker-dashboard .news-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-2px);
         border-color: var(--primary-yellow);
-        box-shadow: 0 10px 25px rgba(241, 184, 13, 0.18);
+        box-shadow: 0 8px 20px rgba(241, 184, 13, 0.15);
     }
 
     .worker-dashboard .news-card:hover .news-action i {
-        transform: translateX(-6px);
+        transform: translateX(-4px);
     }
 
     .worker-dashboard .action-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+        gap: 15px;
     }
 
     .worker-dashboard .action-card {
         background: var(--card-bg);
         border-radius: var(--border-radius);
-        padding: 35px 20px;
+        padding: 22px 15px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 16px;
+        gap: 12px;
         text-decoration: none;
         color: var(--text-main);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         border: 2px solid transparent;
         transition: all 0.3s ease;
         cursor: pointer;
     }
 
     .worker-dashboard .action-card .icon-box {
-        width: 70px;
-        height: 70px;
-        border-radius: 16px;
+        width: 55px;
+        height: 55px;
+        border-radius: 14px;
         background: rgba(241, 184, 13, 0.15);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: #b88a00;
         transition: all 0.3s ease;
     }
 
     .worker-dashboard .action-card span {
         font-weight: bold;
-        font-size: 1.15rem;
+        font-size: 0.95rem;
         text-align: center;
     }
 
     .worker-dashboard .action-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-4px);
         border-color: var(--primary-yellow);
-        box-shadow: 0 12px 25px rgba(241, 184, 13, 0.2);
+        box-shadow: 0 10px 20px rgba(241, 184, 13, 0.18);
     }
 
     .worker-dashboard .action-card:hover .icon-box {
@@ -250,34 +342,96 @@
         color: #fff;
     }
 
-    @@media (max-width: 992px) {
-        .worker-dashboard .action-grid {
-            grid-template-columns: repeat(2, 1fr);
+    @@media (max-width: 768px) {
+        .worker-dashboard .app-header {
+            width: min(100%, calc(100% - 16px));
+            padding: 10px 16px;
+            min-height: 74px;
+            border-radius: 0 0 16px 16px;
         }
 
-        .worker-dashboard .news-text {
-            max-width: 350px;
+        .worker-dashboard .user-pill-info {
+            display: none;
         }
-    }
 
-    @@media (max-width: 576px) {
-        .worker-dashboard .action-grid {
-            grid-template-columns: 1fr;
+        .worker-dashboard .user-pill {
+            padding: 4px;
+            background: transparent;
+        }
+
+        .worker-dashboard .dashboard-container {
+            padding: 0 15px 30px;
+            margin: 15px auto;
+            gap: 15px;
         }
 
         .worker-dashboard .profile-card {
             flex-direction: column;
-            text-align: center;
+            align-items: stretch;
+            padding: 14px;
+            gap: 12px;
+            min-height: 74px;
+            border-right: none;
+            border-top: 4px solid var(--primary-yellow);
+        }
+
+        .worker-dashboard .profile-main-info {
+            justify-content: flex-start;
         }
 
         .worker-dashboard .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            width: 100%;
+        }
+
+        .worker-dashboard .info-item {
+            font-size: 0.75rem;
+            padding: 6px 4px;
             justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            text-align: center;
         }
 
         .worker-dashboard .news-card {
             flex-direction: column;
-            gap: 15px;
             align-items: flex-start;
+            padding: 14px;
+            gap: 10px;
+        }
+
+        .worker-dashboard .news-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .worker-dashboard .news-action {
+            align-self: flex-end;
+            font-size: 0.8rem;
+        }
+
+        .worker-dashboard .action-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .worker-dashboard .action-card {
+            padding: 18px 10px;
+        }
+
+        .worker-dashboard .action-card .icon-box {
+            width: 48px;
+            height: 48px;
+            font-size: 1.25rem;
+            border-radius: 12px;
+        }
+
+        .worker-dashboard .action-card span {
+            font-size: 0.88rem;
         }
     }
 
@@ -285,11 +439,10 @@
         position: fixed;
         bottom: 16px;
         left: 16px;
-        z-index: 10;
+        z-index: 20;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        font-family: Tahoma, 'Vazirmatn', sans-serif;
         pointer-events: none;
         transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.2s ease;
         transform: translateY(0);
@@ -356,7 +509,7 @@
         display: none;
         flex-direction: column;
         overflow: hidden;
-        z-index: 2;
+        z-index: 21;
         border: 1px solid #eee;
         direction: rtl;
         font-family: Tahoma, 'Vazirmatn', sans-serif;
@@ -460,30 +613,46 @@
 </style>
 
 <div class="worker-dashboard">
-    <div class="dashboard-container">
-        <div class="profile-card">
-            <div class="avatar-wrapper">
-                <img src="@(User.FindFirst("Photo")?.Value ?? Url.Content("~/images/Userdefult.png"))" alt="عکس پرسنلی"
-                     class="avatar-img" />
-            </div>
+    <header class="app-header">
+        <a href="#" class="header-brand">
+            <img src="@userPhoto" alt="MHRM Logo" class="logo-img">
+            <span class="title">MHRM</span>
+        </a>
 
-            <div class="profile-info">
-                <h2 class="user-name">@User.Identity?.Name</h2>
-                <div class="info-grid">
-                    <div class="info-item"><i class="fa-solid fa-id-card"></i> کد پرسنلی: <span>@(ViewBag.EmployeePersonnelCode ?? "نامشخص")</span></div>
-                    <div class="info-item"><i class="fa-solid fa-cake-candles"></i> سن: <span>@(ViewBag.EmployeeAgeText ?? "نامشخص")</span></div>
-                    <div class="info-item"><i class="fa-solid fa-user-check"></i> وضعیت: <span>@(ViewBag.EmployeeStatusText ?? "کارمند فعال")</span></div>
+        <div class="header-user-section">
+            <div class="user-pill">
+                <div class="user-pill-avatar">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="user-pill-info">
+                    <span class="name">@userDisplayName</span>
+                    <span class="role">Employee</span>
                 </div>
             </div>
 
-            <div class="profile-logout">
-                <form asp-controller="Account" asp-action="Logout" method="post">
-                    @Html.AntiForgeryToken()
-                    <button type="submit" class="logout-btn">
-                        خروج
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </button>
-                </form>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="logout-btn">
+                    <span>خروج</span>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="profile-card">
+            <div class="profile-main-info">
+                <div class="avatar-wrapper">
+                    <img src="@userPhoto" alt="عکس پرسنلی" class="avatar-img" />
+                </div>
+                <h2 class="user-name">@userDisplayName</h2>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item"><i class="fa-solid fa-id-card"></i> کد پرسنلی: <span>@(ViewBag.EmployeePersonnelCode ?? "نامشخص")</span></div>
+                <div class="info-item"><i class="fa-solid fa-cake-candles"></i> سن: <span>@(ViewBag.EmployeeAgeText ?? "نامشخص")</span></div>
+                <div class="info-item"><i class="fa-solid fa-user-check"></i> وضعیت: <span>@(ViewBag.EmployeeStatusText ?? "کارمند فعال")</span></div>
             </div>
         </div>
 
@@ -643,32 +812,6 @@
         }
 
         return 'ببخشید، در حال حاضر سرویس هوش مصنوعی در دسترس نیست. لطفاً بعداً دوباره تلاش کنید یا از بخش‌های موجود پنل استفاده کنید.';
-    }
-
-    function extractAiAnswer(payload, rawText) {
-        if (!payload && !rawText) return '';
-
-        if (payload && typeof payload === 'object') {
-            return payload.answer || payload.response || payload.message || payload.text || payload.reply || '';
-        }
-
-        if (typeof payload === 'string') {
-            return payload.trim();
-        }
-
-        if (typeof rawText === 'string') {
-            const trimmed = rawText.trim();
-            if (!trimmed) return '';
-
-            try {
-                const parsed = JSON.parse(trimmed);
-                return parsed?.answer || parsed?.response || parsed?.message || parsed?.text || parsed?.reply || trimmed;
-            } catch {
-                return trimmed;
-            }
-        }
-
-        return '';
     }
 
     async function sendMessage() {
